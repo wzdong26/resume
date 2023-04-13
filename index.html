@@ -43,6 +43,14 @@
             margin: 20px 0 10px 0;
         }
 
+        code {
+            box-shadow: 0 0 10px 1px rgba(120, 116, 116, 0.2);
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-weight: bold;
+            font-size: 1.11em;
+        }
+
         .ellipse {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -105,7 +113,7 @@
         <div class="space-between">
             <header>
                 <h1>王志东</h1>
-                <h4>意向岗位: <span>前端开发</span></h4>
+                <h4>意向岗位: <span>前端开发</span><span>（2024届）</span></h4>
                 <section class="info">
                     <div class="vertical-center"><img src="./assets/img/gender.svg" alt="">性别：<span>男</span></div>
                     <div class="vertical-center"><img src="./assets/img/birth.svg" alt="">出生年月：<span>1999-11</span>
@@ -135,7 +143,7 @@
             <div class="space-between">
                 <b class="fixed-length">华东师范大学 | <span>硕士</span></b>
                 <b class="ellipse">地理信息系统</b>
-                <b class="ellipse">2021.09-2024.06</b>
+                <span class="ellipse">2021.09~2024.06</span>
             </div>
             <div>
                 <span>
@@ -146,7 +154,7 @@
             <div class="space-between">
                 <b class="fixed-length">武汉科技大学 | <span>学士</span></b>
                 <b class="ellipse">人文地理与城乡规划</b>
-                <b class="ellipse">2017.09-2021.06</b>
+                <span class="ellipse">2017.09~2021.06</span>
             </div>
             <div>
                 <span>
@@ -161,7 +169,7 @@
                 <div class="space-between">
                     <b class="fixed-length">前端监控系统-字节青训营</b>
                     <span class="ellipse">前端监控sdk研发</span>
-                    <span class="ellipse">2022.07-2022.08</span>
+                    <span class="ellipse">2022.07~2022.08</span>
                 </div>
                 <div>
                     <div class="desc-title">项目描述：</div>
@@ -187,7 +195,7 @@
                 <div class="space-between">
                     <b class="fixed-length">普陀山古树名木数字化系统</b>
                     <span class="ellipse">webapp前端开发</span>
-                    <span class="ellipse">2022.01-2022.12</span>
+                    <span class="ellipse">2022.01~2022.12</span>
                 </div>
                 <div>
                     <div class="desc-title">项目描述：</div>
@@ -201,8 +209,7 @@
                     <div class="desc-title">工作内容：</div>
                     <li>负责巡护管理webapp模块的项目搭建、技术选型，并在项目后期采用 TypeScript 完成了项目重构；</li>
                     <li>实现了列表管理、地图浏览、信息查阅、表单填报、前端扫码等相关功能，并封装了独立功能组件可迁移至同类应用场景；基于 TypeScript 封装实现了若干composition
-                        api（vue3新增，类似react
-                        hooks），包括axios请求、form表单填写校验、数据缓存、轨迹记录等；以及常用 directive, 包括：元素拖拽指令、元素外部点击事件监听指令等；</li>
+                        api，包括axios请求、form表单填写校验、数据缓存、轨迹记录等；以及常用 directive, 包括：元素拖拽指令、元素外部点击事件监听指令等；</li>
                     <li>对于移动端webapp项目组织结构、路由结构设计有一定理解，基于用户角色权限管理对项目结构进行了一次重构；并设计实现了一种动态页面结构广泛用于移动端应用场景</li>
                 </div>
             </section>
@@ -210,7 +217,7 @@
                 <div class="space-between">
                     <b class="fixed-length">二维码门牌地址采集平台</b>
                     <span class="ellipse">前端工程师（实习）</span>
-                    <span class="ellipse">2021.02-2022.07</span>
+                    <span class="ellipse">2021.02~2021.07</span>
                 </div>
                 <div>
                     <div class="desc-title">项目描述：</div>
@@ -237,27 +244,28 @@
             <li>
                 <b>npm包：<a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank">@wzdong/geo</a></b>
                 基于geolocation.watchPosition 封装的前端持续定位 api ，用于复杂前端位置服务应用的定位功能，介绍文档: <a
-                    href="https://github.com/wzdong26/-wzdong/blob/main/geo/md/doc.md#1-watchgeolocation"
-                    target="_blank">https://github.com/wzdong26/-wzdong/blob/main/geo/md/doc.md#1-watchgeolocation</a>
+                    href="https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation"
+                    target="_blank">https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation</a>
             </li>
             <li>
                 <b>npm包：<a href="https://www.npmjs.com/package/@wzdong/utils" target="_blank">@wzdong/utils</a></b>
                 一些 ts 工具 api ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档: <a
-                    href="https://github.com/wzdong26/-wzdong/blob/main/utils/md/doc.md"
-                    target="_blank">https://github.com/wzdong26/-wzdong/blob/main/utils/md/doc.md</a>
+                    href="https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md"
+                    target="_blank">https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md</a>
             </li>
         </section>
         <section>
             <h3 class="vertical-center"><img src="./assets/img/skill.svg" alt="">个人能力</h3>
-            <div><b>核心技术栈：vue3 + typescipt</b></div>
-            <li>熟练掌握JavaScript、HTML、CSS；熟练掌握JavaScript中的ES6+语法、DOM、BOM相关API等；具备良好的前端编码规范；</li>
-            <li>熟练掌握 TypeScript 相关语法；</li>
-            <li>掌握Vue2/3前端技术栈（包括VueRouter、Pinia、Vuex、VueUse）的应用，看过部分源码，了解其相关原理（响应式、组件通信等）；</li>
-            <li>熟练掌握前端项目工程化管理，包括webpack、vite相关配置及原理；</li>
-            <li>了解React前端技术栈的应用开发，编写过基于NextJs实现的服务端渲染应用demo；</li>
-            <li>了解ThreeJs三维前端渲染库的应用开发，掌握OpenLayers等开源地图库、Cesium三维数字地球库的应用开发</li>
-            <li>了解服务端开发流程；掌握Nodejs服务端相关语法，编写过基于express的服务端应用demo，利用其编写过本地mock脚本、表单数据后端校验中间件等；运用Python
-                Flask编写过服务端应用（房源管理系统）；
+            <div><b>核心技术栈：<code>Vue3</code> + <code>TypeScript</code></b></div>
+            <li>熟练掌握<code>TypeScript</code>、<code>JavaScript</code>、<code>HTML</code>、<code>CSS</code>；具备良好的前端编码规范；</li>
+            <li>熟练掌握<code>Vue2/3</code>前端技术栈（包括<code>VueRouter</code>、<code>Pinia</code>、<code>Vuex</code>、<code>VueUse</code>）的应用开发，阅读过 Vue3 部分源码，了解其相关原理；
+            </li>
+            <li>掌握<code>ThreeJs</code>三维前端渲染库的应用开发，掌握<code>OpenLayers</code>等开源地图库、<code>Cesium</code>三维数字地球库的应用开发；</li>
+            <li>
+                掌握前端项目工程化，包括：<code>vite</code>、<code>webpack</code>构建工具的应用及相关原理、<code>pnpm</code>、<code>yarn</code>、<code>npm</code>依赖管理、等；
+            </li>
+            <li>了解<code>React</code>前端技术栈的应用开发，了解<code>NextJs</code>框架；</li>
+            <li>了解服务端开发流程，掌握<code>Nodejs Express</code>服务端开发；掌握<code>Python Flask</code>服务端开发；
             </li>
         </section>
         <section>
