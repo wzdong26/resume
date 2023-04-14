@@ -9,8 +9,11 @@
     <style>
         body {
             margin: 0;
-            width: 100%;
         }
+
+        /* html {
+            font-size: 1vw;
+        } */
 
         .resume-container {
             margin: 0 auto;
@@ -36,6 +39,7 @@
 
         a {
             color: black;
+            word-break: break-all;
         }
 
         h3 {
@@ -63,6 +67,12 @@
             width: 120px;
             position: relative;
             bottom: 0;
+        }
+
+        @media screen and (max-width: calc(15em + 140px)) {
+            .my-pic {
+                display: none;
+            }
         }
 
         .info {
@@ -102,7 +112,7 @@
 
         .desc-title {
             color: #948e8e;
-            font-size: 14px;
+            font-size: 0.9em;
             font-weight: bold;
         }
     </style>
@@ -152,7 +162,7 @@
                 </span>
             </div>
             <div class="space-between">
-                <b class="fixed-length">武汉科技大学 | <span>学士</span></b>
+                <b class="fixed-length">武汉科技大学 | <span>本科</span></b>
                 <b class="ellipse">人文地理与城乡规划</b>
                 <span class="ellipse">2017.09~2021.06</span>
             </div>
@@ -186,7 +196,7 @@
                 <div>
                     <div class="desc-title">工作内容：</div>
                     <li>负责部分监控sdk（异常监控及性能监控）以及监控可视化平台中监控系统性能展示面板的开发工作；</li>
-                    <li>异常监控sdk开发主要包括：异常捕获、上报、定位、聚合、报警等；性能监控sdk开发，主要监控RUM相关指标，包括：FMP、TTI、FID等；同时参与了用户行为监控部分内容，包括路由跳转行为监控，点击行为监控等；
+                    <li>异常监控sdk开发主要包括：异常捕获、上报、定位、聚合、报警等；性能监控sdk开发，主要监控RUM相关指标，包括：FMP、TTI、FID等；同时参与了用户行为监控部分内容，包括路由跳转行为监控，点击行为监控等
                     </li>
                     </li>
                 </div>
@@ -229,7 +239,7 @@
                 </div>
                 <div>
                     <div class="desc-title">工作内容：</div>
-                    <li>参与web端后管平台页面功能开发工作，实现数据采集项列表管理、用户信息管理、列表地图联动等功能</li>
+                    <li>参与web端后管平台页面功能开发工作，实现数据采集项列表管理、用户信息管理、列表地图联动等功能；</li>
                     <li>参与解决前端大数据量列表渲染优化、地图大量点数据渲染优化等相关问题</li>
                 </div>
             </section>
@@ -258,7 +268,8 @@
             <h3 class="vertical-center"><img src="./assets/img/skill.svg" alt="">个人能力</h3>
             <div><b>核心技术栈：<code>Vue3</code> + <code>TypeScript</code></b></div>
             <li>熟练掌握<code>TypeScript</code>、<code>JavaScript</code>、<code>HTML</code>、<code>CSS</code>；具备良好的前端编码规范；</li>
-            <li>熟练掌握<code>Vue2/3</code>前端技术栈（包括<code>VueRouter</code>、<code>Pinia</code>、<code>Vuex</code>、<code>VueUse</code>）的应用开发，阅读过 Vue3 部分源码，了解其相关原理；
+            <li>熟练掌握<code>Vue2/3</code>前端技术栈（包括<code>VueRouter</code>、<code>Pinia</code>、<code>Vuex</code>、<code>VueUse</code>）的应用开发，阅读过
+                Vue3 部分源码，了解其相关原理；
             </li>
             <li>掌握<code>ThreeJs</code>三维前端渲染库的应用开发，掌握<code>OpenLayers</code>等开源地图库、<code>Cesium</code>三维数字地球库的应用开发；</li>
             <li>
