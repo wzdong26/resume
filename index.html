@@ -5,15 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wzdong-resume</title>
+    <title>2024-前端-王志东</title>
     <style>
         body {
             margin: 0;
         }
-
-        /* html {
-            font-size: 1vw;
-        } */
 
         .resume-container {
             margin: 0 auto;
@@ -53,6 +49,7 @@
             padding: 2px 4px;
             font-weight: bold;
             font-size: 1.11em;
+            border-radius: 3px;
         }
 
         .ellipse {
@@ -99,9 +96,8 @@
             flex-shrink: 0;
         }
 
-        #printBtn {
-            position: absolute;
-            z-index: 99;
+        .space-between>.gap {
+            min-width: 1em;
         }
 
         .part {
@@ -152,7 +148,9 @@
             <h3 class="vertical-center"><img src="./assets/img/edu.svg" alt="">教育背景</h3>
             <div class="space-between">
                 <b class="fixed-length">华东师范大学 | <span>硕士</span></b>
+                <span class="gap"></span>
                 <b class="ellipse">地理信息系统</b>
+                <span class="gap"></span>
                 <span class="ellipse">2021.09~2024.06</span>
             </div>
             <div>
@@ -163,7 +161,9 @@
             </div>
             <div class="space-between">
                 <b class="fixed-length">武汉科技大学 | <span>本科</span></b>
+                <span class="gap"></span>
                 <b class="ellipse">人文地理与城乡规划</b>
+                <span class="gap"></span>
                 <span class="ellipse">2017.09~2021.06</span>
             </div>
             <div>
@@ -178,7 +178,9 @@
             <section class="part">
                 <div class="space-between">
                     <b class="fixed-length">前端监控系统-字节青训营</b>
+                    <span class="gap"></span>
                     <span class="ellipse">前端监控sdk研发</span>
+                    <span class="gap"></span>
                     <span class="ellipse">2022.07~2022.08</span>
                 </div>
                 <div>
@@ -204,7 +206,9 @@
             <section class="part">
                 <div class="space-between">
                     <b class="fixed-length">普陀山古树名木数字化系统</b>
+                    <span class="gap"></span>
                     <span class="ellipse">webapp前端开发</span>
+                    <span class="gap"></span>
                     <span class="ellipse">2022.01~2022.12</span>
                 </div>
                 <div>
@@ -226,7 +230,9 @@
             <section>
                 <div class="space-between">
                     <b class="fixed-length">二维码门牌地址采集平台</b>
+                    <span class="gap"></span>
                     <span class="ellipse">前端工程师（实习）</span>
+                    <span class="gap"></span>
                     <span class="ellipse">2021.02~2021.07</span>
                 </div>
                 <div>
