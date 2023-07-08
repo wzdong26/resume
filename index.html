@@ -323,7 +323,10 @@
     const { searchParams } = new URL(decodeURI(href));
     const t = searchParams.get('t');
     const targetTag = document.querySelector('.target-position');
-    t && (targetTag.innerHTML = t); 
+    t && (() => {
+        targetTag.innerHTML = t;
+        document.title = `2024-${t}-王志东`;
+    })(); 
 </script>
 
 </html>
