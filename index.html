@@ -119,7 +119,7 @@
         <div class="space-between">
             <header>
                 <h1>王志东</h1>
-                <h4>意向岗位: <span>前端开发</span><span>（2024届）</span></h4>
+                <h4>意向岗位: <span class="target-position">前端开发</span><span>（2024届）</span></h4>
                 <section class="info">
                     <div class="vertical-center"><img src="./assets/img/gender.svg" alt="">性别：<span>男</span></div>
                     <div class="vertical-center"><img src="./assets/img/birth.svg" alt="">出生年月：<span>1999-11</span>
@@ -155,7 +155,7 @@
             </div>
             <div>
                 <span>
-                    <li><b>研究方向：</b>WebGIS 开发、GIS 前端开发、高精地图前端开发、前端三维引擎渲染</li>
+                    <li>研究方向：WebGIS 开发、GIS 前端开发、高精地图前端开发、前端三维引擎渲染</li>
                     <li>2023.03 在本人所在党支部被民主评议为优秀党员；2022.08 获第四届字节跳动青训营“万码奔腾奖”，结题项目评选第一</li>
                 </span>
             </div>
@@ -168,7 +168,7 @@
             </div>
             <div>
                 <span>
-                    <li><b>绩点排名专业前10%、英语六级</b></li>
+                    <li>绩点排名专业前10%、英语六级</li>
                     <li>2018.09-2019.09 担任本专业团支部书记、学院学习部副部长</li>
                 </span>
             </div>
@@ -181,7 +181,7 @@
                     <span class="gap"></span>
                     <span class="ellipse">蜂鸟物流前端</span>
                     <span class="gap"></span>
-                    <span class="ellipse">2023.06-至今</span>
+                    <span class="ellipse">2023.06 - 至今</span>
                 </div>
                 <div>
                     <div class="desc-title">工作描述：</div>
@@ -197,14 +197,14 @@
                     <div class="desc-title">工作内容：</div>
                     <li>参与优策项目的后期功能迭代，包括实验配置表单项优化、智能分组配置项优化、分流监控以及实验地图监控等功能；</li>
                     <li>参与gridwise项目的后期功能迭代和优化，包括地图中物流网格热力图瓦片化渲染优化、骑手画像模块功能迭代等；</li>
-                    <li>参与物流地图孵化器的前期项目开发，目前尚在进行，主要负责图层属性配置与数据关联、图层可视化、地图组件封装调用该部分模块的开发；</li>
+                    <li>参与物流地图孵化器的前期项目开发，目前尚在进行，主要负责图层属性配置与数据关联、图层可视化、地图组件封装调用这几个部分模块的开发；</li>
                 </div>
             </section>
             <section>
                 <div class="space-between">
                     <b class="fixed-length">顺丰-丰图科技</b>
                     <span class="gap"></span>
-                    <span class="ellipse">前端实习</span>
+                    <span class="ellipse">平台研发前端</span>
                     <span class="gap"></span>
                     <span class="ellipse">2021.02-2021.07</span>
                 </div>
@@ -252,7 +252,7 @@
                     </li>
                 </div>
             </section>
-            <section class="part">
+            <section>
                 <div class="space-between">
                     <b class="fixed-length">普陀山古树名木数字化系统</b>
                     <span class="gap"></span>
@@ -280,18 +280,18 @@
         <section>
             <h3 class="vertical-center"><img src="./assets/img/contr.svg" alt="">个人作品</h3>
             <li>
-                <b>npm包：<a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank">@wzdong/idb</a></b>
-                基于 Promise 封装的 IndexedDB 读写 api ，介绍博客: <a href="https://juejin.cn/post/7166856136748957704"
+                <b><a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank">@wzdong/idb</a></b>
+                基于 Promise 封装的 IndexedDB 读写 api ，介绍文档: <a href="https://juejin.cn/post/7166856136748957704"
                     target="_blank">https://juejin.cn/post/7166856136748957704</a>
             </li>
             <li>
-                <b>npm包：<a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank">@wzdong/geo</a></b>
+                <b><a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank">@wzdong/geo</a></b>
                 基于geolocation.watchPosition 封装的前端持续定位 api ，用于复杂前端位置服务应用的定位功能，介绍文档: <a
                     href="https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation"
                     target="_blank">https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation</a>
             </li>
             <li>
-                <b>npm包：<a href="https://www.npmjs.com/package/@wzdong/utils" target="_blank">@wzdong/utils</a></b>
+                <b><a href="https://www.npmjs.com/package/@wzdong/utils" target="_blank">@wzdong/utils</a></b>
                 一些 ts 工具 api ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档: <a
                     href="https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md"
                     target="_blank">https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md</a>
@@ -299,24 +299,31 @@
         </section>
         <section>
             <h3 class="vertical-center"><img src="./assets/img/skill.svg" alt="">个人能力</h3>
-            <li>熟练掌握<code>TypeScript</code>、<code>JavaScript</code>、<code>HTML</code>、<code>CSS</code>；具备良好的前端编码规范；</li>
-            <li>熟练掌握<code>Vue2/3</code>前端技术栈的应用开发，阅读过 Vue3 部分源码，了解相关原理；
+            <li>熟练掌握 TypeScript 、 JavaScript 、 HTML 、 CSS ；具备良好的前端编码规范；</li>
+            <li>熟悉 Vue2/3 前端技术栈的应用开发，阅读过 Vue3 部分源码，了解相关原理；
             </li>
-            <li>了解<code>React</code>前端技术栈的应用开发，了解<code>NextJs</code>框架；</li>
-            <li>掌握<code>ThreeJs</code>三维前端渲染库的应用开发，掌握<code>OpenLayers</code>等开源地图库、<code>Cesium</code>三维数字地球库的应用开发；</li>
+            <li>掌握 React 前端技术栈的应用开发，了解 NextJs 框架；</li>
+            <li>掌握 ThreeJs 三维前端渲染库的应用开发，掌握 OpenLayers 等开源地图库、 Cesium 三维数字地球库的应用开发；</li>
             <li>
-                掌握前端项目工程化，包括：<code>vite</code>、<code>webpack</code>构建工具的应用及相关原理、<code>pnpm</code>、<code>yarn</code>、<code>npm</code>依赖管理、等；
+                掌握前端项目工程化，包括： vite 、 webpack 构建工具的应用及相关原理、 pnpm 、 yarn 、 npm 依赖管理、等；
             </li>
-            <li>了解服务端开发流程，掌握<code>Nodejs Express</code>服务端开发；掌握<code>Python Flask</code>服务端开发；
+            <li>了解服务端开发流程，掌握 Nodejs Express 服务端开发；掌握 Python Flask 服务端开发；
             </li>
         </section>
         <section>
             <h3 class="vertical-center"><img src="./assets/img/self-desc.svg" alt="">自我评价</h3>
             <li>性格沉着稳重，热爱生活，富有团队精神、集体荣誉感和钻研精神，工作效率高，擅长逻辑推导、归纳总结，抽象思维能力强；</li>
-            <li>自主学习能力强，有较强的适应能力和抗压能力；</li>
-            <li>爱好广泛，爱好篮球，热爱运动，热爱音乐，喜欢弹吉他，听歌、看电影；</li>
+            <li>自主学习能力强，有较强的适应能力和抗压能力；热爱技术、对新技术有较敏感的洞察力；</li>
+            <li>爱好广泛，爱好篮球、游泳，热爱运动，热爱音乐，喜欢听歌、看电影；</li>
         </section>
     </div>
 </body>
+<script type="module">
+    const { href } = location;
+    const { searchParams } = new URL(decodeURI(href));
+    const t = searchParams.get('t');
+    const targetTag = document.querySelector('.target-position');
+    t && (targetTag.innerHTML = t); 
+</script>
 
 </html>
