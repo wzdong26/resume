@@ -121,7 +121,9 @@
         position: fixed;
         top: 5px;
         right: 5px;
-        cursor: pointer;
+      }
+      .theme-btn > a {
+        text-decoration: none;
       }
       .theme-light-btn {
         display: none;
@@ -448,8 +450,8 @@
       </section>
     </div>
     <div class="theme-btn">
-      <span class="theme-dark-btn" title="夜间模式" href="/?dark">🌑</span>
-      <span class="theme-light-btn" title="日常模式" href="/">🌕</span>
+      <a class="theme-dark-btn" title="夜间模式" href="/?dark">🌑</a>
+      <a class="theme-light-btn" title="日常模式" href="/">🌕</a>
     </div>
   </body>
   <script type="module">
@@ -470,13 +472,13 @@
       const styleTag = document.createElement("style");
       let styleContent = "";
       {
-        const linkNo = searchParams.get("pure");
+        const pure = searchParams.get("pure");
         if (pure != null) {
           styleContent += `
             a {
                 text-decoration: none;
             }
-            theme-btn {
+            .theme-btn {
                 display: none;
             }
             `;
