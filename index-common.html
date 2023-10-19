@@ -17,16 +17,16 @@
         margin: 0;
         background-color: var(--background-color);
         color: var(--color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .resume-container {
-        margin: 0 auto;
         box-sizing: border-box;
-        width: 100vw;
-        max-width: 1080px;
+        max-width: 960px;
         padding: 10px 25px 20px 25px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 20px 15px 10px 15px;
         box-shadow: 0 0 15px 3px var(--border-color);
       }
 
@@ -72,7 +72,7 @@
         bottom: 0;
       }
 
-      @media screen and (max-width: calc(15em + 140px)) {
+      @media screen and (max-width: calc(15em + 280px)) {
         .my-pic {
           display: none;
         }
@@ -87,7 +87,8 @@
       }
 
       .info div {
-        min-width: calc((1080px - 150px) / 3 - 20px);
+        min-width: 15em;
+        /* min-width: calc((1080px - 150px) / 3 - 20px); */
         align-self: center;
       }
 
@@ -127,6 +128,36 @@
       }
       .theme-light-btn {
         display: none;
+      }
+
+      .resume-qrcode {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 0.8em;
+        color: var(--light-color);
+      }
+      .resume-qrcode > img {
+        width: 80px;
+      }
+
+      .section-container {
+        overflow: hidden;
+      }
+      .section-container > div {
+        float: left;
+        margin-right: 20px;
+        word-break: break-all;
+        overflow: hidden;
+      }
+      .section-container img {
+        width: 50px;
+        margin-bottom: -8px;
+      }
+      .qrcode-section-container {
+        display: flex;
+        text-align: center;
+        font-size: 0.8em;
+        justify-content: space-evenly;
       }
     </style>
   </head>
@@ -230,7 +261,7 @@
           <div class="space-between">
             <b class="fixed-length">阿里本地生活</b>
             <span class="gap"></span>
-            <span class="ellipse">前端工程师 | 物流技术部</span>
+            <span class="ellipse">前端工程师 - 物流技术部</span>
             <span class="gap"></span>
             <span class="ellipse">2023.06-2023.09</span>
           </div>
@@ -260,7 +291,7 @@
           <div class="space-between">
             <b class="fixed-length">顺丰丰图科技</b>
             <span class="gap"></span>
-            <span class="ellipse">研发产品经理 | 平台研发部</span>
+            <span class="ellipse">研发产品经理 - 平台研发部</span>
             <span class="gap"></span>
             <span class="ellipse">2021.02-2021.07</span>
           </div>
@@ -344,47 +375,143 @@
         <h3 class="vertical-center">
           <img src="./assets/img/contr.svg" alt="" />个人作品
         </h3>
-        <li>
-          <b
-            ><a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank"
-              >@wzdong/idb</a
-            ></b
-          >
-          基于 Promise 封装的 IndexedDB 读写 api ，介绍文档:
-          <a href="https://juejin.cn/post/7166856136748957704" target="_blank"
-            >https://juejin.cn/post/7166856136748957704</a
-          >
-        </li>
-        <li>
-          <b
-            ><a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank"
-              >@wzdong/geo</a
-            ></b
-          >
-          基于geolocation.watchPosition 封装的前端持续定位 api
-          ，用于复杂前端位置服务应用的定位功能，介绍文档:
-          <a
-            href="https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation"
-            target="_blank"
-            >https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation</a
-          >
-        </li>
-        <li>
-          <b
-            ><a
-              href="https://www.npmjs.com/package/@wzdong/utils"
-              target="_blank"
-              >@wzdong/utils</a
-            ></b
-          >
-          一些 ts 工具 api
-          ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档:
-          <a
-            href="https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md"
-            target="_blank"
-            >https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md</a
-          >
-        </li>
+        <div class="section-container">
+          <div>
+            <div>
+              <b>@wzdong/idb</b>
+            </div>
+            <div class="qrcode-section-container">
+              <div>
+                <img src="./assets/img/qrcode_npmjs_idb.png" alt="" />
+                <div>
+                  <a
+                    href="https://www.npmjs.com/package/@wzdong/idb"
+                    target="_blank"
+                    >npm</a
+                  >
+                </div>
+              </div>
+              <div>
+                <img src="./assets/img/qrcode_doc_idb.png" alt="" />
+                <div>
+                  <a
+                    href="https://juejin.cn/post/7166856136748957704"
+                    target="_blank"
+                    >介绍文档</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>webgpu-samples</b>
+            </div>
+            <div class="qrcode-section-container">
+              <div>
+                <img src="./assets/img/qrcode_github_webgpu.png" alt="" />
+                <div>
+                  <a
+                    href="https://github.com/wzdong26/webgpu-samples"
+                    target="_blank"
+                    >github</a
+                  >
+                </div>
+              </div>
+              <div>
+                <img src="./assets/img/qrcode_website_webgpu.png" alt="" />
+                <div>
+                  <a
+                    href="https://wzdong26.github.io/webgpu-samples/#/texturedCube"
+                    target="_blank"
+                    >作品地址</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>@wzdong/geo</b>
+            </div>
+            <div class="qrcode-section-container">
+              <div>
+                <img src="./assets/img/qrcode_npmjs_geo.png" alt="" />
+                <div>
+                  <a
+                    href="https://www.npmjs.com/package/@wzdong/geo"
+                    target="_blank"
+                    >npm</a
+                  >
+                </div>
+              </div>
+              <div>
+                <img src="./assets/img/qrcode_doc_geo.png" alt="" />
+                <div>
+                  <a
+                    href="https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation"
+                    target="_blank"
+                    >介绍文档</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>@wzdong/utils</b>
+            </div>
+            <div class="qrcode-section-container">
+              <div>
+                <img src="./assets/img/qrcode_npmjs_utils.png" alt="" />
+                <div>
+                  <a
+                    href="https://www.npmjs.com/package/@wzdong/utils"
+                    target="_blank"
+                    >npm</a
+                  >
+                </div>
+              </div>
+              <div>
+                <img src="./assets/img/qrcode_doc_utils.png" alt="" />
+                <div>
+                  <a
+                    href="https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md"
+                    target="_blank"
+                    >介绍文档</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>博客文章</b>
+            </div>
+            <div class="qrcode-section-container">
+              <div>
+                <img src="./assets/img/qrcode_npmjs_utils.png" alt="" />
+                <div>
+                  <a
+                    href="https://juejin.cn/post/7213298252536266810"
+                    target="_blank"
+                    >掘金1</a
+                  >
+                </div>
+              </div>
+              <div>
+                <img src="./assets/img/qrcode_doc_utils.png" alt="" />
+                <div>
+                  <a
+                    href="https://juejin.cn/post/7144604560063987748"
+                    target="_blank"
+                    >掘金2</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <section>
         <h3 class="vertical-center">
@@ -411,8 +538,9 @@
           <img src="./assets/img/self-desc.svg" alt="" />自我评价
         </h3>
         <li>
-          性格沉着稳重，富有团队精神、集体荣誉感和钻研精神，工作效率高，擅长逻辑推导、归纳总结，抽象思维能力强；
+          性格沉着稳重，富有团队精神、集体荣誉感和钻研精神；
         </li>
+        <li>目标导向强，工作效率高，擅长逻辑推导、归纳总结，抽象思维能力强;</li>
         <li>
           自主学习能力强，有较强的适应能力和抗压能力；热爱技术、对新技术有较敏感的洞察力；
         </li>
@@ -420,6 +548,11 @@
           热爱生活，爱好广泛，爱好篮球、游泳，热爱运动，热爱音乐，喜欢听歌、看电影；
         </li>
       </section>
+    </div>
+    <div class="resume-qrcode">
+      <img src="./assets/img/qrcode_resume_common.png" />
+      <div>扫描二维码可查看本人在线简历</div>
+      <div>https://wzdong26.github.io/resume/index-common.html</div>
     </div>
     <div class="theme-btn">
       <a class="theme-dark-btn" title="夜间模式" href="./?dark">🌑</a>

@@ -17,16 +17,16 @@
         margin: 0;
         background-color: var(--background-color);
         color: var(--color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .resume-container {
-        margin: 0 auto;
         box-sizing: border-box;
-        width: 100vw;
-        max-width: 1080px;
+        max-width: 960px;
         padding: 10px 25px 20px 25px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 20px 15px 10px 15px;
         box-shadow: 0 0 15px 3px var(--border-color);
       }
 
@@ -72,7 +72,7 @@
         bottom: 0;
       }
 
-      @media screen and (max-width: calc(15em + 140px)) {
+      @media screen and (max-width: calc(15em + 280px)) {
         .my-pic {
           display: none;
         }
@@ -87,8 +87,8 @@
       }
 
       .info div {
-        /* min-width: 15em; */
-        min-width: calc((1080px - 150px) / 3 - 20px);
+        min-width: 15em;
+        /* min-width: calc((1080px - 150px) / 3 - 20px); */
         align-self: center;
       }
 
@@ -129,6 +129,16 @@
       .theme-light-btn {
         display: none;
       }
+
+      .resume-qrcode {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 0.8em;
+        color: var(--light-color);
+      }
+      .resume-qrcode > img {
+        width: 80px;
+      }
     </style>
   </head>
   <body>
@@ -168,13 +178,13 @@
                 >wzdong.26@qq.com</a
               >
             </div>
-            <!-- <div class="vertical-center">
+            <div class="vertical-center">
               <img src="./assets/img/github.svg" alt="" />GitHub：<span
                 ><a href="https://github.com/wzdong26" target="_blank"
                   >wzdong26</a
                 ></span
               >
-            </div> -->
+            </div>
             <div class="vertical-center">
               <img src="./assets/img/address.svg" alt="" />联系地址：<span
                 >上海市闵行区虹梅南路5800号</span
@@ -229,7 +239,7 @@
           <div class="space-between">
             <b class="fixed-length">阿里本地生活</b>
             <span class="gap"></span>
-            <span class="ellipse">前端开发 | 物流技术部</span>
+            <span class="ellipse">前端开发 - 物流技术部</span>
             <span class="gap"></span>
             <span class="ellipse">2023.06-2023.09</span>
           </div>
@@ -260,7 +270,7 @@
           <div class="space-between">
             <b class="fixed-length">顺丰丰图科技</b>
             <span class="gap"></span>
-            <span class="ellipse">前端开发 | 平台研发部</span>
+            <span class="ellipse">前端开发 - 平台研发部</span>
             <span class="gap"></span>
             <span class="ellipse">2021.02-2021.07</span>
           </div>
@@ -361,6 +371,19 @@
         </h3>
         <li>
           <b
+            ><a
+              href="https://github.com/wzdong26/webgpu-samples"
+              target="_blank"
+              >webgpu-samples</a
+            ></b
+          >
+          基于chrome最新支持的WebGPU API实现的简单Web三维示例，作品在线地址:
+          <a href="https://wzdong26.github.io/webgpu-samples/" target="_blank"
+            >https://wzdong26.github.io/webgpu-samples/</a
+          >
+        </li>
+        <li>
+          <b
             ><a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank"
               >@wzdong/idb</a
             ></b
@@ -435,8 +458,9 @@
           <img src="./assets/img/self-desc.svg" alt="" />自我评价
         </h3>
         <li>
-          性格沉着稳重，富有团队精神、集体荣誉感和钻研精神，工作效率高，擅长逻辑推导、归纳总结，抽象思维能力强；
+          性格沉着稳重，富有团队精神、集体荣誉感和钻研精神；
         </li>
+        <li>目标导向强，工作效率高，擅长逻辑推导、归纳总结，抽象思维能力强;</li>
         <li>
           自主学习能力强，有较强的适应能力和抗压能力；热爱技术、对新技术有较敏感的洞察力；
         </li>
@@ -444,6 +468,11 @@
           热爱生活，爱好广泛，爱好篮球、游泳，热爱运动，热爱音乐，喜欢听歌、看电影；
         </li>
       </section>
+    </div>
+    <div class="resume-qrcode">
+      <img src="./assets/img/qrcode_resume.png" />
+      <div>扫描二维码可查看本人在线简历</div>
+      <div>https://wzdong26.github.io/resume/</div>
     </div>
     <div class="theme-btn">
       <a class="theme-dark-btn" title="夜间模式" href="./?dark">🌑</a>
