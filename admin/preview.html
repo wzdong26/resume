@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume</title>
+    <style>
+      :root {
+        --background-color: #fff;
+        --color: #000;
+        --light-color: #948e8e;
+        --border-color: #dce0e7;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--background-color);
+        color: var(--color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .resume-container {
+        box-sizing: border-box;
+        max-width: 960px;
+        padding: 10px 25px 20px 25px;
+        margin: 20px 15px 10px 15px;
+        box-shadow: 0 0 15px 3px var(--border-color);
+      }
+
+      .vertical-center {
+        display: flex;
+        align-items: center;
+      }
+
+      .vertical-center > img {
+        height: 1em;
+        margin-right: 2px;
+      }
+
+      a {
+        text-decoration: none;
+        word-break: break-all;
+      }
+
+      h1 {
+        margin: 0 0 15px 0;
+      }
+
+      h3 {
+        border-bottom: 1px solid var(--color);
+        margin: 15px 0 8px 0;
+      }
+
+      h4 {
+        margin: 5px 0 10px 0;
+      }
+
+      .ellipse {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .photo {
+        border-radius: 12px;
+        box-shadow: 0 0 15px 1px var(--border-color);
+        width: 110px;
+        position: relative;
+        bottom: 0;
+      }
+
+      @media screen and (max-width: calc(15em + 280px)) {
+        .photo {
+          display: none;
+        }
+      }
+
+      .info {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .info div {
+        min-width: 15em;
+        /* min-width: calc((1080px - 150px) / 3 - 20px); */
+        align-self: center;
+      }
+
+      .space-between {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .space-between > .fixed-length {
+        flex-shrink: 0;
+      }
+
+      .space-between > .gap {
+        min-width: 1em;
+      }
+
+      .dashed-separator {
+        padding-bottom: 4px;
+        margin-bottom: 4px;
+        border-bottom: 1px dashed var(--border-color);
+      }
+
+      .desc-title {
+        color: var(--light-color);
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+      .theme-btn {
+        position: fixed;
+        top: 5px;
+        right: 5px;
+      }
+      .theme-btn > a {
+        text-decoration: none;
+      }
+      .theme-light-btn {
+        display: none;
+      }
+
+      .resume-qrcode {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 0.8em;
+        color: var(--light-color);
+      }
+      .resume-qrcode > img {
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="resume-container">
+      <div class="space-between">
+        <header>
+          <h1 class="title"></h1>
+          <h4 class="subtitle"></h4>
+          <section class="info"></section>
+        </header>
+        <div class="fixed-length">
+          <img class="photo" src="" alt="" />
+        </div>
+      </div>
+      <div class="content-container"></div>
+    </div>
+    <div class="resume-qrcode">
+      <img src="./assets/img/qrcode_resume.png" />
+      <div>扫描二维码可查看本人在线简历</div>
+      <div>https://wzdong26.github.io/resume/</div>
+    </div>
+    <div class="theme-btn">
+      <a class="theme-dark-btn" title="夜间模式" href="./?dark">🌑</a>
+      <a class="theme-light-btn" title="日常模式" href="./">🌕</a>
+    </div>
+  </body>
+  <script type="module">
+    const data = JSON.parse(localStorage.getItem("data"));
+    function joinArr(arr, cb, separator = "") {
+      return arr?.length ? arr.map(cb).join(separator) : "";
+    }
+    {
+      const titleTag = document.querySelector(".title");
+      titleTag.innerHTML = data.title;
+      const subtitleTag = document.querySelector(".subtitle");
+      subtitleTag.innerHTML = data.subtitle;
+      const infoTag = document.querySelector(".info");
+      infoTag.innerHTML = joinArr(
+        data.info,
+        ({ field, value, icon }) => `
+        <div class="vertical-center">
+            <img src="${icon}" alt="" />${field}：<span>${value}</span>
+        </div>
+        `
+      );
+      const photoTag = document.querySelector(".photo");
+      photoTag.src = data.photo;
+    }
+    {
+      const chaptersTag = document.querySelector(".content-container");
+      chaptersTag.innerHTML = joinArr(
+        data.chapters,
+        ({ title, icon, sections }) => `
+        <section>
+            <h3 class="vertical-center">
+                <img src="${icon}" alt="" />${title}
+            </h3>
+            ${joinArr(
+              sections,
+              ({ titles, fragments }) => `
+                <div class="space-between">
+                    ${joinArr(
+                      titles,
+                      (e, i) => `
+                        <span class="${
+                          i ? "ellipse" : "fixed-length"
+                        }">${e}</span>
+                        `,
+                      '<span class="gap"></span>'
+                    )}
+                </div>
+                <div>
+                    ${joinArr(
+                      fragments,
+                      ({ title, content }) => `
+                        <div>
+                            ${
+                              title
+                                ? `<div class="desc-title">${title}</div>`
+                                : ""
+                            }
+                            ${joinArr(
+                              content.split("\n"),
+                              (e) => `<li>${e}</li>`
+                            )}
+                        </div>
+                        `
+                    )}
+                </div>
+            `,
+              '<div class="dashed-separator"></div>'
+            )}
+        </section>
+        `
+      );
+    }
+  </script>
+  <script type="module">
+    const { href } = location;
+    const { searchParams } = new URL(decodeURI(href));
+    // 切换样式
+    {
+      const styleTag = document.createElement("style");
+      let styleContent = "";
+      {
+        const dark = searchParams.get("dark");
+        if (dark != null) {
+          styleContent += `
+            :root {
+                --background-color: #2f2d2d;
+                --color: #fff;
+                --light-color: #dce0e7;
+                --border-color: #948e8e;
+            }
+            .theme-dark-btn {
+                display: none;
+            }
+            .theme-light-btn {
+                display: block;
+            }
+            `;
+        }
+        {
+          const pure = searchParams.get("pure");
+          if (pure != null) {
+            styleContent += `
+            a {
+                color: var(--color);
+            }
+            .theme-btn {
+                display: none;
+            }
+            `;
+          }
+        }
+      }
+      styleTag.innerHTML = styleContent;
+      document.head.appendChild(styleTag);
+    }
+  </script>
+</html>
