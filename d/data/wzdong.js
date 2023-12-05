@@ -1,7 +1,7 @@
 const data = {
   docTitle: "2024-王志东-前端开发",
   title: "王志东",
-  photo: "/assets/img/me.jpg",
+  photo: "../assets/img/me.jpg",
   subtitle: "意向岗位：前端开发（2024应届）",
   info: [
     { value: "性别：男", icon: "" },
@@ -26,7 +26,7 @@ const data = {
   chapters: [
     {
       title: "教育背景",
-      icon: "/assets/img/edu.svg",
+      icon: "../assets/img/edu.svg",
       sections: [
         {
           titles: [
@@ -59,7 +59,7 @@ const data = {
     },
     {
       title: "实习经历",
-      icon: "/assets/img/work.svg",
+      icon: "../assets/img/work.svg",
       sections: [
         {
           titles: [
@@ -105,7 +105,7 @@ const data = {
     },
     {
       title: "项目经历",
-      icon: "/assets/img/proj.svg",
+      icon: "../assets/img/proj.svg",
       sections: [
         {
           titles: [
@@ -151,7 +151,7 @@ const data = {
     },
     {
       title: "个人作品",
-      icon: "/assets/img/contr.svg",
+      icon: "../assets/img/contr.svg",
       sections: [
         {
           fragments: [
@@ -167,7 +167,7 @@ const data = {
     },
     {
       title: "个人能力",
-      icon: "/assets/img/skill.svg",
+      icon: "../assets/img/skill.svg",
       sections: [
         {
           fragments: [
@@ -186,7 +186,7 @@ const data = {
     },
     {
       title: "自我评价",
-      icon: "/assets/img/self-desc.svg",
+      icon: "../assets/img/self-desc.svg",
       sections: [
         {
           fragments: [

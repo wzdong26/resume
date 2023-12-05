@@ -36,7 +36,7 @@
           <textarea name="jsonTemplate" rows="40" cols="50" readonly></textarea>
         </div>
       </form>
-      <iframe src="./preview.html"></iframe>
+      <iframe src="./index.html"></iframe>
     </div>
     <script type="module">
       let photo;
@@ -48,7 +48,7 @@
           const data = JSON.parse(textareaTag.value.replaceAll("\n", ""));
           data.photo = photo;
           localStorage.setItem("data", JSON.stringify(data));
-          iframeTag.src = "./preview.html";
+          iframeTag.src = "./index.html";
         } catch {}
       }
 
