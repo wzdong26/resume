@@ -156,10 +156,10 @@ const data = {
         {
           fragments: [
             {
-              content: `<a href="https://github.com/wzdong26/webgpu-samples" target="_blank"><b>webgpu-samples</b></a> 基于chrome最新支持的WebGPU API实现的简单Web三维示例，作品在线地址: https://wzdong26.github.io/webgpu-samples/
-<a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank"><b>@wzdong/idb</b></a> 基于 Promise 封装的 IndexedDB 读写 api ，介绍文档: https://juejin.cn/post/7166856136748957704
-<a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank"><b>@wzdong/geo</b></a> 基于geolocation.watchPosition 封装的前端持续定位 api ，用于复杂前端位置服务应用的定位功能，介绍文档: https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation
-<a href="https://www.npmjs.com/package/@wzdong/utils" target="_blank"><b>@wzdong/utils</b></a> 一些 ts 工具 api ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档: https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md`,
+              content: `<a href="https://github.com/wzdong26/webgpu-samples" target="_blank"><b>webgpu-samples</b></a> 基于chrome最新支持的WebGPU API实现的简单Web三维示例，作品在线地址: {{https://wzdong26.github.io/webgpu-samples/}}
+<a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank"><b>@wzdong/idb</b></a> 基于 Promise 封装的 IndexedDB 读写 api ，介绍文档: {{https://juejin.cn/post/7166856136748957704}}
+<a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank"><b>@wzdong/geo</b></a> 基于geolocation.watchPosition 封装的前端持续定位 api ，用于复杂前端位置服务应用的定位功能，介绍文档: {{https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation}}
+<a href="https://www.npmjs.com/package/@wzdong/utils" target="_blank"><b>@wzdong/utils</b></a> 一些 ts 工具 api ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档: {{https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md}}`,
             },
           ],
         },

@@ -181,13 +181,12 @@
       return arr?.length ? arr.map(cb).join(separator) : "";
     }
     function $url2Link(str, target = "_self") {
+      // {{https://juejin.cn/post/7166856136748957704}}
       const urlReg =
-        /.{2}((https?:\/\/)?(([0-9a-z.]+\.[a-z]+)|(([0-9]{1,3}\.){3}[0-9]{1,3}))(:[0-9]+)?(\/[0-9a-z%/.\-_]*)?(\?[0-9a-z=&%_\-]*)?(\#[0-9a-z=&%_\-]*)?)./gi;
+        /\{\{((https?:\/\/)?(([0-9a-z.]+\.[a-z]+)|(([0-9]{1,3}\.){3}[0-9]{1,3}))(:[0-9]+)?\/[-a-z0-9_:@&?=+,.!/~*'%$]*)\}\}/gi;
       return str.replace(urlReg, (s, t) => {
-        const left = s.slice(0, 2);
-        const right = s[s.length - 1];
-        if (left === '="' && right === '"') return s;
-        return `${left}<a href="${t}" target="${target}">${t}</a>${right}`;
+        console.log(s, t);
+        return `<a href="${t}" target="${target}">${t}</a>`;
       });
     }
     function $writeHtml(dom, html) {
