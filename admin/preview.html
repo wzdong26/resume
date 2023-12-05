@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="wzdong26" />
     <title>Resume</title>
     <style>
       :root {
@@ -163,8 +164,35 @@
     </div>
   </body>
   <script>
+    // env var
     const href = decodeURIComponent(location.href);
     const { searchParams } = new URL(decodeURI(href));
+    // utils
+    function $importScript(src) {
+      return new Promise((res, rej) => {
+        const scriptTag = document.createElement("script");
+        scriptTag.src = src;
+        document.body.appendChild(scriptTag);
+        scriptTag.onload = res;
+        scriptTag.onerror = rej;
+      });
+    }
+    function $joinArr(arr, cb, separator = "") {
+      return arr?.length ? arr.map(cb).join(separator) : "";
+    }
+    function $url2Link(str, target = "_self") {
+      const regExp =
+        /https?:\/\/[-a-z0-9]+(\.[-a-z0-9])*\.(com|cn|edu|uk)\/[-a-z0-9_:@&?=+,.!/~*'%$]*/gi;
+      return str.replace(
+        regExp,
+        (t) => `<a href="${t}" target="${target}">${t}</a>`
+      );
+    }
+    function $writeHtml(dom, html) {
+      const regExp = /<script(([\s\S])*?)<\/script>/gi;
+      dom.innerHTML = html.replace(regExp, "");
+      return regExp.test(html);
+    }
   </script>
   <script type="module" async>
     // 切换样式
@@ -201,39 +229,35 @@
             `;
         }
       }
-      {
-        const type = searchParams.get("type");
-        if (type == null) {
-          styleContent += `
-            .resume-qrcode {
-                display: none;
-            }
-            `;
-        }
-      }
     }
-    styleTag.innerHTML = styleContent;
+    $writeHtml(styleTag, styleContent);
     document.head.appendChild(styleTag);
   </script>
   <script type="module" async>
-    const importScript = document.createElement("script");
-    importScript.src =
-      "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js";
-    document.body.appendChild(importScript);
-    importScript.onload = () => {
-      const qrcodeContainer = document.getElementById("qrcode");
+    // qrcode
+    const qrcodeContainer = document.getElementById("qrcode");
+
+    const resumeType = searchParams.get("type");
+    if (!resumeType) {
+      qrcodeContainer.setAttribute("style", "display: none;");
+    }
+
+    $importScript(
+      "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
+    ).then(() => {
       const qrcode = new QRCode("qrcode", encodeURIComponent(href));
       const qrcodeText1 = document.createElement("div");
       qrcodeText1.innerHTML = "扫描二维码可在线查看简历";
       const qrcodeText2 = document.createElement("div");
-      qrcodeText2.innerHTML = href;
+      $writeHtml(qrcodeText2, href);
       qrcodeContainer.appendChild(qrcodeText1);
       qrcodeContainer.appendChild(qrcodeText2);
-    };
+    });
   </script>
   <script type="module" async>
     const type = searchParams.get("type");
     let data;
+    // target data on cdn -> local target data -> demo data on cdn
     if (type) {
       try {
         const { default: defaultData } = await import(`./data/${type}.js`);
@@ -241,43 +265,47 @@
       } catch {}
     }
     data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
-    if (!data) alert("数据缺失！");
-
-    function joinArr(arr, cb, separator = "") {
-      return arr?.length ? arr.map(cb).join(separator) : "";
+    if (!data && alert("数据缺失！")) {
+      const { default: defaultData } = await import(`./data/demo.js`);
+      data = defaultData;
     }
     {
       data.docTitle && (document.title = data.docTitle);
       const titleTag = document.querySelector(".title");
-      data.title && (titleTag.innerHTML = data.title);
+      data.title && $writeHtml(titleTag, data.title);
       const subtitleTag = document.querySelector(".subtitle");
-      data.subtitle && (subtitleTag.innerHTML = data.subtitle);
+      data.subtitle && $writeHtml(subtitleTag, data.subtitle);
       const infoTag = document.querySelector(".info");
-      infoTag.innerHTML = joinArr(
-        data.info,
-        ({ field, value, icon }) => `
+      $writeHtml(
+        infoTag,
+        $joinArr(
+          data.info,
+          ({ field, value, icon }) => `
         <div class="vertical-center">
-            <img src="${icon}" alt="" />${field}：<span>${value}</span>
+            <img src="${icon}" alt="" />${value}
         </div>
         `
+        )
       );
       const photoTag = document.querySelector(".photo");
       data.photo && (photoTag.src = data.photo);
     }
     {
       const chaptersTag = document.querySelector(".content-container");
-      chaptersTag.innerHTML = joinArr(
-        data.chapters,
-        ({ title, icon, sections }) => `
+      $writeHtml(
+        chaptersTag,
+        $joinArr(
+          data.chapters,
+          ({ title, icon, sections }) => `
         <section>
             <h3 class="vertical-center">
                 <img src="${icon}" alt="" />${title}
             </h3>
-            ${joinArr(
+            ${$joinArr(
               sections,
               ({ titles, fragments }) => `
                 <div class="space-between">
-                    ${joinArr(
+                    ${$joinArr(
                       titles,
                       (e, i) => `
                         <span class="${
@@ -288,7 +316,7 @@
                     )}
                 </div>
                 <div>
-                    ${joinArr(
+                    ${$joinArr(
                       fragments,
                       ({ title, content }) => `
                         <div>
@@ -297,8 +325,8 @@
                                 ? `<div class="desc-title">${title}</div>`
                                 : ""
                             }
-                            ${joinArr(
-                              content.split("\n"),
+                            ${$joinArr(
+                              $url2Link(content, "_blank").split("\n"),
                               (e) => `<li>${e}</li>`
                             )}
                         </div>
@@ -310,6 +338,7 @@
             )}
         </section>
         `
+        )
       );
     }
   </script>

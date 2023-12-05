@@ -4,27 +4,24 @@ const data = {
   photo: "./assets/img/me.jpg",
   subtitle: "意向岗位：前端开发（2024应届）",
   info: [
-    { field: "性别", value: "男", icon: "" },
-    { field: "出生年月", value: "1999-11", icon: "" },
-    { field: "政治面貌", value: "中共党员", icon: "" },
-    { field: "籍贯", value: "湖北省武汉市", icon: "" },
+    { value: "性别：男", icon: "" },
+    { value: "出生年月：1999-11", icon: "" },
+    { value: "政治面貌：中共党员", icon: "" },
+    { value: "籍贯：湖北省武汉市", icon: "" },
     {
-      field: "电话",
-      value: '<a href="tel:+8615623856332">15623856332</a>',
+      value: '电话：<a href="tel:+8615623856332">15623856332</a>',
       icon: "",
     },
     {
-      field: "邮箱",
-      value: '<a href="mailto:wzdong.26@qq.com">wzdong.26@qq.com</a>',
+      value: '邮箱：<a href="mailto:wzdong.26@qq.com">wzdong.26@qq.com</a>',
       icon: "",
     },
     {
-      field: "GitHub",
       value:
-        '<a href="https://github.com/wzdong26" target="_blank">wzdong26</a>',
+        'GitHub：<a href="https://github.com/wzdong26" target="_blank">wzdong26</a>',
       icon: "",
     },
-    { field: "联系地址", value: "上海市闵行区虹梅南路5800号", icon: "" },
+    { value: "联系地址：上海市闵行区虹梅南路5800号", icon: "" },
   ],
   chapters: [
     {
@@ -159,10 +156,10 @@ const data = {
         {
           fragments: [
             {
-              content: `<b>webgpu-samples</b> 基于chrome最新支持的WebGPU API实现的简单Web三维示例，作品在线地址: https://wzdong26.github.io/webgpu-samples/
-<b>@wzdong/idb</b> 基于 Promise 封装的 IndexedDB 读写 api ，介绍文档: https://juejin.cn/post/7166856136748957704
-<b>@wzdong/geo</b> 基于geolocation.watchPosition 封装的前端持续定位 api ，用于复杂前端位置服务应用的定位功能，介绍文档: https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation
-<b>@wzdong/utils</b> 一些 ts 工具 api ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档: https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md`,
+              content: `<a href="https://github.com/wzdong26/webgpu-samples" target="_blank"><b>webgpu-samples</b></a> 基于chrome最新支持的WebGPU API实现的简单Web三维示例，作品在线地址: https://wzdong26.github.io/webgpu-samples/
+<a href="https://www.npmjs.com/package/@wzdong/idb" target="_blank"><b>@wzdong/idb</b></a> 基于 Promise 封装的 IndexedDB 读写 api ，介绍文档: https://juejin.cn/post/7166856136748957704
+<a href="https://www.npmjs.com/package/@wzdong/geo" target="_blank"><b>@wzdong/geo</b></a> 基于geolocation.watchPosition 封装的前端持续定位 api ，用于复杂前端位置服务应用的定位功能，介绍文档: https://github.com/wzdong26/-wzdong/blob/main/packages/geo/md/doc.md#1-watchgeolocation
+<a href="https://www.npmjs.com/package/@wzdong/utils" target="_blank"><b>@wzdong/utils</b></a> 一些 ts 工具 api ，如防抖节流、事件订阅器、惰性单例函数包装器等，介绍文档: https://github.com/wzdong26/-wzdong/blob/main/packages/utils/md/doc.md`,
             },
           ],
         },
