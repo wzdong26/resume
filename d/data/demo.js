@@ -3,29 +3,29 @@ const data = {
   photo: "./assets/img/me.jpg",
   subtitle: "意向岗位：xxx（2024应届）",
   info: [
-    { value: "性别：男", icon: "" },
-    { value: "出生年月：1999-11", icon: "" },
-    { value: "中共党员", icon: "" },
-    { value: "籍贯：湖北省武汉市", icon: "" },
+    { value: "性别：男", icon: "../assets/img/gender.svg" },
+    { value: "出生年月：1999-11", icon: "../assets/img/birth.svg" },
+    { value: "政治面貌：中共党员", icon: "../assets/img/politics.svg" },
+    { value: "籍贯：湖北省武汉市", icon: "../assets/img/native-place.svg" },
     {
       value: 'tel：<a href="tel:+8615600006332">156xxxx6332</a>',
-      icon: "",
+      icon: "../assets/img/phone.svg",
     },
     {
       value: '<a href="mailto:xxxxx@qq.com">xxxxx@qq.com</a>',
-      icon: "",
+      icon: "../assets/img/email.svg",
     },
     {
       value:
         '<a href="https://github.com/wzdong26" target="_blank">GitHub：wzdong26</a>',
-      icon: "",
+      icon: "../assets/img/github.svg",
     },
     { value: "联系地址：上海市xxxxx", icon: "" },
   ],
   chapters: [
     {
       title: "教育背景",
-      icon: "./assets/img/edu.svg",
+      icon: "../assets/img/edu.svg",
       sections: [
         {
           titles: [
@@ -58,7 +58,7 @@ const data = {
     },
     {
       title: "实习经历",
-      icon: "./assets/img/work.svg",
+      icon: "../assets/img/work.svg",
       sections: [
         {
           titles: ["<b>阿里</b>", "前端开发", "2023.06-2023.09"],
@@ -96,7 +96,7 @@ const data = {
     },
     {
       title: "项目经历",
-      icon: "./assets/img/proj.svg",
+      icon: "../assets/img/proj.svg",
       sections: [
         {
           titles: ["<b>前端监控系统-字节青训营</b>", "2022.07-2022.08"],
@@ -133,7 +133,7 @@ const data = {
     },
     {
       title: "个人作品",
-      icon: "./assets/img/contr.svg",
+      icon: "../assets/img/contr.svg",
       sections: [
         {
           fragments: [
@@ -147,7 +147,7 @@ const data = {
     },
     {
       title: "个人能力",
-      icon: "./assets/img/skill.svg",
+      icon: "../assets/img/skill.svg",
       sections: [
         {
           fragments: [
@@ -164,7 +164,7 @@ const data = {
     },
     {
       title: "自我评价",
-      icon: "./assets/img/self-desc.svg",
+      icon: "../assets/img/self-desc.svg",
       sections: [
         {
           fragments: [

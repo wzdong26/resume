@@ -4,24 +4,27 @@ const data = {
   photo: "../assets/img/me.jpg",
   subtitle: "意向岗位：前端开发（2024应届）",
   info: [
-    { value: "性别：男", icon: "" },
-    { value: "出生年月：1999-11", icon: "" },
-    { value: "政治面貌：中共党员", icon: "" },
-    { value: "籍贯：湖北省武汉市", icon: "" },
+    { value: "性别：男", icon: "../assets/img/gender.svg" },
+    { value: "出生年月：1999-11", icon: "../assets/img/birth.svg" },
+    { value: "政治面貌：中共党员", icon: "../assets/img/politics.svg" },
+    { value: "籍贯：湖北省武汉市", icon: "../assets/img/native-place.svg" },
     {
       value: '电话：<a href="tel:+8615623856332">15623856332</a>',
-      icon: "",
+      icon: "../assets/img/phone.svg",
     },
     {
       value: '邮箱：<a href="mailto:wzdong.26@qq.com">wzdong.26@qq.com</a>',
-      icon: "",
+      icon: "../assets/img/email.svg",
     },
     {
       value:
         'GitHub：<a href="https://github.com/wzdong26" target="_blank">wzdong26</a>',
-      icon: "",
+      icon: "../assets/img/github.svg",
     },
-    { value: "联系地址：上海市闵行区虹梅南路5800号", icon: "" },
+    {
+      value: "联系地址：上海市闵行区虹梅南路5800号",
+      icon: "../assets/img/address.svg",
+    },
   ],
   chapters: [
     {

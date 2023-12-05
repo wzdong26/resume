@@ -266,7 +266,8 @@
       } catch {}
     }
     data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
-    if (!data && alert("数据缺失！")) {
+    if (!data) {
+      alert("数据缺失！");
       const { default: defaultData } = await import(`./data/demo.js`);
       data = defaultData;
     }
