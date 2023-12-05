@@ -138,6 +138,7 @@
       }
       .resume-qrcode > img {
         width: 80px;
+        display: inline-block !important;
       }
     </style>
   </head>
@@ -155,26 +156,102 @@
       </div>
       <div class="content-container"></div>
     </div>
-    <div class="resume-qrcode">
-      <img src="./assets/img/qrcode_resume.png" />
-      <div>扫描二维码可查看本人在线简历</div>
-      <div>https://wzdong26.github.io/resume/</div>
-    </div>
+    <div id="qrcode" class="resume-qrcode"></div>
     <div class="theme-btn">
       <a class="theme-dark-btn" title="夜间模式" href="./?dark">🌑</a>
       <a class="theme-light-btn" title="日常模式" href="./">🌕</a>
     </div>
   </body>
-  <script type="module">
-    const data = JSON.parse(localStorage.getItem("data"));
+  <script>
+    const href = decodeURIComponent(location.href);
+    const { searchParams } = new URL(decodeURI(href));
+  </script>
+  <script type="module" async>
+    // 切换样式
+    const styleTag = document.createElement("style");
+    let styleContent = "";
+    {
+      const dark = searchParams.get("dark");
+      if (dark != null) {
+        styleContent += `
+            :root {
+                --background-color: #2f2d2d;
+                --color: #fff;
+                --light-color: #dce0e7;
+                --border-color: #948e8e;
+            }
+            .theme-dark-btn {
+                display: none;
+            }
+            .theme-light-btn {
+                display: block;
+            }
+            `;
+      }
+      {
+        const pure = searchParams.get("pure");
+        if (pure != null) {
+          styleContent += `
+            a {
+                color: var(--color);
+            }
+            .theme-btn {
+                display: none;
+            }
+            `;
+        }
+      }
+      {
+        const type = searchParams.get("type");
+        if (type == null) {
+          styleContent += `
+            .resume-qrcode {
+                display: none;
+            }
+            `;
+        }
+      }
+    }
+    styleTag.innerHTML = styleContent;
+    document.head.appendChild(styleTag);
+  </script>
+  <script type="module" async>
+    const importScript = document.createElement("script");
+    importScript.src =
+      "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js";
+    document.body.appendChild(importScript);
+    importScript.onload = () => {
+      const qrcodeContainer = document.getElementById("qrcode");
+      const qrcode = new QRCode("qrcode", encodeURIComponent(href));
+      const qrcodeText1 = document.createElement("div");
+      qrcodeText1.innerHTML = "扫描二维码可在线查看简历";
+      const qrcodeText2 = document.createElement("div");
+      qrcodeText2.innerHTML = href;
+      qrcodeContainer.appendChild(qrcodeText1);
+      qrcodeContainer.appendChild(qrcodeText2);
+    };
+  </script>
+  <script type="module" async>
+    const type = searchParams.get("type");
+    let data;
+    if (type) {
+      try {
+        const { default: defaultData } = await import(`./data/${type}.js`);
+        data = defaultData;
+      } catch {}
+    }
+    data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
+    if (!data) alert("数据缺失！");
+
     function joinArr(arr, cb, separator = "") {
       return arr?.length ? arr.map(cb).join(separator) : "";
     }
     {
+      data.docTitle && (document.title = data.docTitle);
       const titleTag = document.querySelector(".title");
-      titleTag.innerHTML = data.title;
+      data.title && (titleTag.innerHTML = data.title);
       const subtitleTag = document.querySelector(".subtitle");
-      subtitleTag.innerHTML = data.subtitle;
+      data.subtitle && (subtitleTag.innerHTML = data.subtitle);
       const infoTag = document.querySelector(".info");
       infoTag.innerHTML = joinArr(
         data.info,
@@ -185,7 +262,7 @@
         `
       );
       const photoTag = document.querySelector(".photo");
-      photoTag.src = data.photo;
+      data.photo && (photoTag.src = data.photo);
     }
     {
       const chaptersTag = document.querySelector(".content-container");
@@ -234,49 +311,6 @@
         </section>
         `
       );
-    }
-  </script>
-  <script type="module">
-    const { href } = location;
-    const { searchParams } = new URL(decodeURI(href));
-    // 切换样式
-    {
-      const styleTag = document.createElement("style");
-      let styleContent = "";
-      {
-        const dark = searchParams.get("dark");
-        if (dark != null) {
-          styleContent += `
-            :root {
-                --background-color: #2f2d2d;
-                --color: #fff;
-                --light-color: #dce0e7;
-                --border-color: #948e8e;
-            }
-            .theme-dark-btn {
-                display: none;
-            }
-            .theme-light-btn {
-                display: block;
-            }
-            `;
-        }
-        {
-          const pure = searchParams.get("pure");
-          if (pure != null) {
-            styleContent += `
-            a {
-                color: var(--color);
-            }
-            .theme-btn {
-                display: none;
-            }
-            `;
-          }
-        }
-      }
-      styleTag.innerHTML = styleContent;
-      document.head.appendChild(styleTag);
     }
   </script>
 </html>
