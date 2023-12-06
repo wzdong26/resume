@@ -1,7 +1,7 @@
 const data = {
   title: "xxx",
-  photo: "./assets/icon/me.jpg",
-  subtitle: "意向岗位：xxx（2024应届）",
+  photo: "./assets/d/demo.png",
+  subtitle: "意向岗位：xxx",
   info: [
     { value: "性别：男", icon: "../assets/icon/gender.svg" },
     { value: "出生年月：1999-11", icon: "../assets/icon/birth.svg" },
