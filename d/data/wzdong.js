@@ -1,8 +1,7 @@
 const data = {
-  docTitle: "2024-王志东-前端开发",
+  docTitle: "2024-王志东",
   title: "王志东",
   photo: "../assets/d/wzdong.jpg",
-  subtitle: "意向岗位：前端开发（2024应届）",
   info: [
     { value: "性别：男", icon: "../assets/icon/gender.svg" },
     { value: "出生年月：1999-11", icon: "../assets/icon/birth.svg" },
@@ -123,8 +122,7 @@ const data = {
           fragments: [
             {
               title: "【项目描述】",
-              content: `
-              项目已上线投入普陀山公共事业中心正常使用，用于日常古树巡护管理工作；
+              content: `项目已上线投入普陀山公共事业中心正常使用，用于日常古树巡护管理工作；
               项目包含巡护管理、在线诊断、认养管理、实时监控、可视化大屏等多个独立应用模块，协同服务于古树名木管护工作；`,
             },
             {

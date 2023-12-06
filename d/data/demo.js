@@ -1,31 +1,31 @@
 const data = {
   title: "xxx",
-  photo: "./assets/img/me.jpg",
+  photo: "./assets/icon/me.jpg",
   subtitle: "意向岗位：xxx（2024应届）",
   info: [
-    { value: "性别：男", icon: "../assets/img/gender.svg" },
-    { value: "出生年月：1999-11", icon: "../assets/img/birth.svg" },
-    { value: "政治面貌：中共党员", icon: "../assets/img/politics.svg" },
-    { value: "籍贯：湖北省武汉市", icon: "../assets/img/native-place.svg" },
+    { value: "性别：男", icon: "../assets/icon/gender.svg" },
+    { value: "出生年月：1999-11", icon: "../assets/icon/birth.svg" },
+    { value: "政治面貌：中共党员", icon: "../assets/icon/politics.svg" },
+    { value: "籍贯：湖北省武汉市", icon: "../assets/icon/native-place.svg" },
     {
       value: 'tel：<a href="tel:+8615600006332">156xxxx6332</a>',
-      icon: "../assets/img/phone.svg",
+      icon: "../assets/icon/phone.svg",
     },
     {
       value: '<a href="mailto:xxxxx@qq.com">xxxxx@qq.com</a>',
-      icon: "../assets/img/email.svg",
+      icon: "../assets/icon/email.svg",
     },
     {
       value:
         '<a href="https://github.com/wzdong26" target="_blank">GitHub：wzdong26</a>',
-      icon: "../assets/img/github.svg",
+      icon: "../assets/icon/github.svg",
     },
-    { value: "联系地址：上海市xxxxx", icon: "" },
+    { value: "联系地址：上海市xxxxx", icon: "../assets/icon/address.svg" },
   ],
   chapters: [
     {
       title: "教育背景",
-      icon: "../assets/img/edu.svg",
+      icon: "../assets/icon/edu.svg",
       sections: [
         {
           titles: [
@@ -37,7 +37,7 @@ const data = {
             {
               title: "",
               content: `研究方向：xxxx、xxxx、xxxx；
-  2023.03在本人所在党支部被民主评议为优秀党员；`,
+              2023.03在本人所在党支部被民主评议为优秀党员；`,
             },
           ],
         },
@@ -50,7 +50,7 @@ const data = {
           fragments: [
             {
               content: `绩点排名专业前10%；CET-6；校级优秀学生干部、优秀共青团员；
-  2018.09-2019.09担任本专业团支部书记、学院学习部副部长；2018年度获校级优秀学生二等奖学金；`,
+              2018.09-2019.09担任本专业团支部书记、学院学习部副部长；2018年度获校级优秀学生二等奖学金；`,
             },
           ],
         },
@@ -58,37 +58,38 @@ const data = {
     },
     {
       title: "实习经历",
-      icon: "../assets/img/work.svg",
+      icon: "../assets/icon/work.svg",
       sections: [
         {
-          titles: ["<b>阿里</b>", "前端开发", "2023.06-2023.09"],
+          titles: ["<b>阿里</b>", "前端开发工程师", "2023.06-2023.09"],
           fragments: [
             {
               title: "【工作描述】",
               content: `xxxxx；
-  业务背景：xxxxx；
-  技术栈：xxxxx；`,
+              业务背景：xxxxx；
+              技术栈：xxxxx；`,
             },
             {
               title: "【工作业绩】",
               content: `xxxxx；
-  xxxxx；
-  xxxxx；`,
+              xxxxx；
+              xxxxx；`,
             },
           ],
         },
         {
-          titles: ["<b>顺丰</b>", "前端开发", "2021.02-2021.07"],
+          titles: ["<b>字节</b>", "前端开发工程师", "2022.12-2023.03"],
           fragments: [
             {
               title: "【工作描述】",
               content: `xxxxx；
-  项目前端技术栈主要包括：vue2 + vuex + elementUI + openLayers + ...；`,
+              技术栈：xxxxx；`,
             },
             {
               title: "【工作业绩】",
               content: `xxxxx；
-  xxxxx；`,
+              xxxxx；
+              xxxxx；`,
             },
           ],
         },
@@ -96,21 +97,21 @@ const data = {
     },
     {
       title: "项目经历",
-      icon: "../assets/img/proj.svg",
+      icon: "../assets/icon/proj.svg",
       sections: [
         {
           titles: ["<b>前端监控系统-字节青训营</b>", "2022.07-2022.08"],
           fragments: [
             {
               title: "【项目描述】",
-              content: `该项目在第四届字节青训营的四十余个小组（共两千余人）中结题评选第一名；
-  xxxxx；
-  技术栈： xxxxx；`,
+              content: `xxxxx；
+              xxxxx；
+              技术栈： xxxxx；`,
             },
             {
               title: "【项目职责】",
               content: `xxxxx；
-  xxxxx；`,
+              xxxxx；`,
             },
           ],
         },
@@ -119,8 +120,8 @@ const data = {
           fragments: [
             {
               title: "【项目描述】",
-              content: `xxx；
-  技术栈： ...；`,
+              content: `xxxxx；
+              技术栈： xxxxx；`,
             },
             {
               title: "【项目职责】",
@@ -133,7 +134,7 @@ const data = {
     },
     {
       title: "个人作品",
-      icon: "../assets/img/contr.svg",
+      icon: "../assets/icon/contr.svg",
       sections: [
         {
           fragments: [
@@ -147,7 +148,7 @@ const data = {
     },
     {
       title: "个人能力",
-      icon: "../assets/img/skill.svg",
+      icon: "../assets/icon/skill.svg",
       sections: [
         {
           fragments: [
@@ -164,7 +165,7 @@ const data = {
     },
     {
       title: "自我评价",
-      icon: "../assets/img/self-desc.svg",
+      icon: "../assets/icon/self-desc.svg",
       sections: [
         {
           fragments: [
