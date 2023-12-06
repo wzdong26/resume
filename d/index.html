@@ -8,10 +8,11 @@
     <title>Resume</title>
     <style>
       :root {
-        --background-color: #fff;
-        --color: #000;
+        --background-color: #ffffff;
+        --color: #000000;
         --light-color: #948e8e;
         --border-color: #dce0e7;
+        --theme-color: var(--color);
       }
 
       body {
@@ -34,11 +35,18 @@
       .vertical-center {
         display: flex;
         align-items: center;
+        overflow: hidden;
+      }
+
+      h3.vertical-center {
+        color: var(--theme-color);
       }
 
       .vertical-center > img {
         height: 1em;
         margin-right: 2px;
+        filter: drop-shadow(0 1lh 0 var(--theme-color));
+        transform: translateY(-1lh);
       }
 
       a {
@@ -51,7 +59,12 @@
       }
 
       h3 {
-        border-bottom: 1px solid var(--color);
+        border-bottom: 2px solid;
+        border-image: linear-gradient(
+            var(--theme-color) 60%,
+            rgba(255, 255, 255, 0.2) 100%
+          )
+          4;
         margin: 15px 0 8px 0;
       }
 
@@ -119,27 +132,31 @@
         font-size: 0.8em;
         font-weight: bold;
       }
+
       .theme-btn {
         position: fixed;
         top: 5px;
         right: 5px;
+        cursor: pointer;
       }
-      .theme-btn > a {
-        text-decoration: none;
-      }
-      .theme-light-btn {
-        display: none;
+      .theme-btn-plus {
+        position: fixed;
+        top: 30px;
+        right: 5px;
+        inline-size: 27px;
+        padding: 0;
       }
 
       .resume-qrcode {
         margin-bottom: 20px;
-        text-align: center;
         font-size: 0.8em;
         color: var(--light-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-      .resume-qrcode > img {
+      .resume-qrcode img {
         width: 80px;
-        display: inline-block !important;
       }
     </style>
   </head>
@@ -157,16 +174,18 @@
       </div>
       <div class="content-container"></div>
     </div>
-    <div id="qrcode" class="resume-qrcode"></div>
-    <div class="theme-btn">
-      <a class="theme-dark-btn" title="夜间模式" href="./?dark">🌑</a>
-      <a class="theme-light-btn" title="日常模式" href="./">🌕</a>
+    <div class="resume-qrcode">
+      <div></div>
+      <div>扫描二维码可在线查看简历</div>
     </div>
+    <div class="theme-btn"></div>
+    <input class="theme-btn-plus" type="color" />
   </body>
   <script>
     // env var
     const href = decodeURIComponent(location.href);
     const { searchParams } = new URL(decodeURI(href));
+    const root = document.querySelector(":root");
     // utils
     function $importScript(src) {
       return new Promise((res, rej) => {
@@ -181,7 +200,7 @@
       return arr?.length ? arr.map(cb).join(separator) : "";
     }
     function $url2Link(str, target = "_self") {
-      // demo: {{https://juejin.cn/post/7166856136748957704}}
+      /* demo: {{https://juejin.cn/post/7166856136748957704}} */
       const urlReg =
         /\{\{((https?:\/\/)?(([0-9a-z.]+\.[a-z]+)|(([0-9]{1,3}\.){3}[0-9]{1,3}))(:[0-9]+)?\/[-a-z0-9_:@&?=+,.!/~*'%$#]*)\}\}/gi;
       return str.replace(
@@ -200,60 +219,108 @@
     const styleTag = document.createElement("style");
     let styleContent = "";
     {
-      const dark = searchParams.get("dark");
-      if (dark != null) {
+      const pure = searchParams.get("pure");
+      if (pure != null) {
         styleContent += `
-            :root {
-                --background-color: #2f2d2d;
-                --color: #fff;
-                --light-color: #dce0e7;
-                --border-color: #948e8e;
-            }
-            .theme-dark-btn {
-                display: none;
-            }
-            .theme-light-btn {
-                display: block;
-            }
-            `;
-      }
-      {
-        const pure = searchParams.get("pure");
-        if (pure != null) {
-          styleContent += `
-            a {
-                color: var(--color);
-            }
-            .theme-btn {
-                display: none;
-            }
-            `;
-        }
+          a {
+            color: var(--color);
+          }
+          .theme-btn {
+            display: none;
+          }
+          .theme-btn-plus {
+            display: none;
+          }
+        `;
+        pure === "force" &&
+          document.addEventListener(
+            "click",
+            (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            },
+            true
+          );
       }
     }
-    $writeHtml(styleTag, styleContent);
+    styleTag.innerHTML = styleContent;
     document.head.appendChild(styleTag);
   </script>
   <script type="module" async>
     // qrcode
-    const qrcodeContainer = document.getElementById("qrcode");
-
+    const qrcodeContainer = document.querySelector("div.resume-qrcode");
     const resumeType = searchParams.get("type");
     if (!resumeType) {
       qrcodeContainer.setAttribute("style", "display: none;");
     }
+    const qrcodeText = document.createElement("div");
+    $writeHtml(qrcodeText, href);
+    qrcodeContainer.appendChild(qrcodeText);
 
     $importScript(
       "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
     ).then(() => {
-      const qrcode = new QRCode("qrcode", encodeURIComponent(href));
-      const qrcodeText1 = document.createElement("div");
-      qrcodeText1.innerHTML = "扫描二维码可在线查看简历";
-      const qrcodeText2 = document.createElement("div");
-      $writeHtml(qrcodeText2, href);
-      qrcodeContainer.appendChild(qrcodeText1);
-      qrcodeContainer.appendChild(qrcodeText2);
+      let colorDark = root.style.getPropertyValue("--theme-color");
+      if (colorDark.indexOf("#") !== 0)
+        colorDark = root.style.getPropertyValue("--color");
+      const qrcode = new QRCode(qrcodeContainer.children[0], {
+        text: encodeURIComponent(href),
+        correctLevel: QRCode.CorrectLevel.M,
+        colorDark,
+        colorLight: root.style.getPropertyValue("--background-color"),
+      });
     });
+  </script>
+  <script type="module" async>
+    // theme-btn
+    {
+      let isDark = localStorage.getItem("dark");
+      window.addEventListener("beforeunload", () => {
+        isDark
+          ? localStorage.setItem("dark", isDark)
+          : localStorage.removeItem("dark");
+      });
+      const themeBtn = document.querySelector("div.theme-btn");
+      function setTheme() {
+        root.style.setProperty(
+          "--background-color",
+          isDark ? "#2f2d2d" : "#ffffff"
+        );
+        root.style.setProperty("--color", isDark ? "#ffffff" : "#000000");
+        root.style.setProperty("--light-color", isDark ? "#dce0e7" : "#948e8e");
+        root.style.setProperty(
+          "--border-color",
+          isDark ? "#948e8e" : "#dce0e7"
+        );
+        themeBtn.title = `${isDark ? "夜间" : "日常"}模式`;
+        themeBtn.innerText = isDark ? "🌑" : "🌕";
+      }
+      setTheme();
+      themeBtn.addEventListener("click", () => {
+        isDark = +!isDark;
+        setTheme();
+      });
+    }
+    {
+      let themeColor = localStorage.getItem("themeColor");
+      window.addEventListener("beforeunload", () => {
+        localStorage.setItem("themeColor", themeColor);
+      });
+      const themeBtnPlus = document.querySelector("input.theme-btn-plus");
+      function setTheme() {
+        if (themeColor === "#000000") {
+          root.style.setProperty("--theme-color", "var(--color)");
+        } else {
+          root.style.setProperty("--theme-color", themeColor);
+        }
+        themeBtnPlus.value = themeColor;
+      }
+      setTheme();
+      themeBtnPlus.addEventListener("change", () => {
+        themeColor = themeBtnPlus.value;
+        setTheme();
+      });
+    }
   </script>
   <script type="module" async>
     const type = searchParams.get("type");
@@ -267,8 +334,9 @@
     }
     data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
     if (!data) {
+      const dataModule = import(`./data/demo.js`);
       alert("数据缺失！");
-      const { default: defaultData } = await import(`./data/demo.js`);
+      const { default: defaultData } = await dataModule;
       data = defaultData;
     }
     {
@@ -283,10 +351,10 @@
         $joinArr(
           data.info,
           ({ field, value, icon }) => `
-        <div class="vertical-center">
+          <div class="vertical-center">
             <img src="${icon}" alt="" />${value}
-        </div>
-        `
+          </div>
+          `
         )
       );
       const photoTag = document.querySelector(".photo");
