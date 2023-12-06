@@ -1,227 +1,228 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="wzdong26" />
-    <title>Resume</title>
-    <style>
-      :root {
-        --background-color: #ffffff;
-        --color: #000000;
-        --light-color: #948e8e;
-        --border-color: #dce0e7;
-        --theme-color: var(--color);
-      }
 
-      body {
-        margin: 0;
-        background-color: var(--background-color);
-        color: var(--color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="wzdong26" />
+  <title>Resume</title>
+  <style>
+    :root {
+      --background-color: #ffffff;
+      --color: #000000;
+      --light-color: #948e8e;
+      --border-color: #dce0e7;
+      --theme-color: var(--color);
+    }
 
-      .resume-container {
-        box-sizing: border-box;
-        max-width: 960px;
-        padding: 10px 25px 20px 25px;
-        margin: 20px 15px 10px 15px;
-        box-shadow: 0 0 15px 3px var(--border-color);
-      }
+    body {
+      margin: 0;
+      background-color: var(--background-color);
+      color: var(--color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .vertical-center {
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-      }
+    .resume-container {
+      box-sizing: border-box;
+      max-width: 960px;
+      padding: 10px 25px 20px 25px;
+      margin: 20px 15px 10px 15px;
+      box-shadow: 0 0 15px 3px var(--border-color);
+    }
 
-      h3.vertical-center {
-        color: var(--theme-color);
-      }
+    .vertical-center {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
 
-      .vertical-center > img {
-        height: 1em;
-        margin-right: 2px;
-        filter: drop-shadow(0 1lh 0 var(--theme-color));
-        transform: translateY(-1lh);
-      }
+    h3.vertical-center {
+      color: var(--theme-color);
+    }
 
-      a {
-        text-decoration: none;
-        word-break: break-all;
-      }
+    .vertical-center>img {
+      height: 1em;
+      margin-right: 2px;
+      filter: drop-shadow(0 1lh 0 var(--theme-color));
+      transform: translateY(-1lh);
+    }
 
-      h1 {
-        margin: 0 0 15px 0;
-      }
+    a {
+      text-decoration: none;
+      word-break: break-all;
+    }
 
-      h3 {
-        border-bottom: 2px solid;
-        border-image: linear-gradient(
-            var(--theme-color) 60%,
-            rgba(255, 255, 255, 0.2) 100%
-          )
-          4;
-        margin: 15px 0 8px 0;
-      }
+    h1 {
+      margin: 0 0 15px 0;
+    }
 
-      h4 {
-        margin: 5px 0 10px 0;
-      }
+    h3 {
+      border-bottom: 2px solid;
+      border-image: linear-gradient(var(--theme-color) 60%,
+          rgba(255, 255, 255, 0.2) 100%) 4;
+      margin: 15px 0 8px 0;
+    }
 
-      .ellipse {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+    h4 {
+      margin: 5px 0 10px 0;
+    }
 
+    .ellipse {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .photo {
+      border-radius: 12px;
+      box-shadow: 0 0 15px 1px var(--border-color);
+      width: 110px;
+      position: relative;
+      bottom: 0;
+    }
+
+    @media screen and (max-width: calc(15em + 280px)) {
       .photo {
-        border-radius: 12px;
-        box-shadow: 0 0 15px 1px var(--border-color);
-        width: 110px;
-        position: relative;
-        bottom: 0;
+        display: none;
       }
+    }
 
-      @media screen and (max-width: calc(15em + 280px)) {
-        .photo {
-          display: none;
-        }
-      }
+    .info {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
 
-      .info {
-        display: flex;
-        box-sizing: border-box;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-      }
+    .info div {
+      min-width: 15em;
+      /* min-width: calc((1080px - 150px) / 3 - 20px); */
+      align-self: center;
+    }
 
-      .info div {
-        min-width: 15em;
-        /* min-width: calc((1080px - 150px) / 3 - 20px); */
-        align-self: center;
-      }
+    .space-between {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .space-between {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    .space-between>.fixed-length {
+      flex-shrink: 0;
+    }
 
-      .space-between > .fixed-length {
-        flex-shrink: 0;
-      }
+    .space-between>.gap {
+      min-width: 1em;
+    }
 
-      .space-between > .gap {
-        min-width: 1em;
-      }
+    .dashed-separator {
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+      border-bottom: 1px dashed var(--border-color);
+    }
 
-      .dashed-separator {
-        padding-bottom: 4px;
-        margin-bottom: 4px;
-        border-bottom: 1px dashed var(--border-color);
-      }
+    .desc-title {
+      color: var(--light-color);
+      font-size: 0.8em;
+      font-weight: bold;
+    }
 
-      .desc-title {
-        color: var(--light-color);
-        font-size: 0.8em;
-        font-weight: bold;
-      }
+    .theme-btn {
+      position: fixed;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
 
-      .theme-btn {
-        position: fixed;
-        top: 5px;
-        right: 5px;
-        cursor: pointer;
-      }
-      .theme-btn-plus {
-        position: fixed;
-        top: 30px;
-        right: 5px;
-        inline-size: 27px;
-        padding: 0;
-      }
+    .theme-btn-plus {
+      position: fixed;
+      top: 30px;
+      right: 5px;
+      inline-size: 27px;
+      padding: 0;
+    }
 
-      .resume-qrcode {
-        margin-bottom: 20px;
-        font-size: 0.8em;
-        color: var(--light-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .resume-qrcode img {
-        width: 80px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="resume-container">
-      <div class="space-between">
-        <header>
-          <h1 class="title"></h1>
-          <h4 class="subtitle"></h4>
-          <section class="info"></section>
-        </header>
-        <div class="fixed-length">
-          <img class="photo" src="" alt="" />
-        </div>
+    .resume-qrcode {
+      margin-bottom: 20px;
+      font-size: 0.8em;
+      color: var(--light-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume-qrcode img {
+      width: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="resume-container">
+    <div class="space-between">
+      <header>
+        <h1 class="title"></h1>
+        <h4 class="subtitle"></h4>
+        <section class="info"></section>
+      </header>
+      <div class="fixed-length">
+        <img class="photo" src="" alt="" />
       </div>
-      <div class="content-container"></div>
     </div>
-    <div class="resume-qrcode">
-      <div></div>
-      <div>扫描二维码可在线查看简历</div>
-    </div>
-    <div class="theme-btn"></div>
-    <input class="theme-btn-plus" type="color" />
-  </body>
-  <script>
-    // env var
-    const href = decodeURIComponent(location.href);
-    const { searchParams } = new URL(decodeURI(href));
-    const root = document.querySelector(":root");
-    // utils
-    function $importScript(src) {
-      return new Promise((res, rej) => {
-        const scriptTag = document.createElement("script");
-        scriptTag.src = src;
-        document.body.appendChild(scriptTag);
-        scriptTag.onload = res;
-        scriptTag.onerror = rej;
-      });
-    }
-    function $joinArr(arr, cb, separator = "") {
-      return arr?.length ? arr.map(cb).join(separator) : "";
-    }
-    function $url2Link(str, target = "_self") {
-      /* demo: {{https://juejin.cn/post/7166856136748957704}} */
-      const urlReg =
-        /\{\{((https?:\/\/)?(([0-9a-z.]+\.[a-z]+)|(([0-9]{1,3}\.){3}[0-9]{1,3}))(:[0-9]+)?\/[-a-z0-9_:@&?=+,.!/~*'%$#]*)\}\}/gi;
-      return str.replace(
-        urlReg,
-        (s, t) => `<a href="${t}" target="${target}">${t}</a>`
-      );
-    }
-    function $writeHtml(dom, html) {
-      const regExp = /<script(([\s\S])*?)<\/script>/gi;
-      dom.innerHTML = html.replace(regExp, "");
-      return regExp.test(html);
-    }
-  </script>
-  <script type="module" async>
-    // 切换样式
-    const styleTag = document.createElement("style");
-    let styleContent = "";
-    {
-      const pure = searchParams.get("pure");
-      if (pure != null) {
-        styleContent += `
+    <div class="content-container"></div>
+  </div>
+  <div class="resume-qrcode">
+    <div></div>
+    <div>扫描二维码可在线查看简历</div>
+  </div>
+  <div class="theme-btn"></div>
+  <input class="theme-btn-plus" type="color" />
+</body>
+<script>
+  // env var
+  const href = decodeURIComponent(location.href);
+  const { searchParams } = new URL(decodeURI(href));
+  const root = document.querySelector(":root");
+  // utils
+  function $importScript(src) {
+    return new Promise((res, rej) => {
+      const scriptTag = document.createElement("script");
+      scriptTag.src = src;
+      document.body.appendChild(scriptTag);
+      scriptTag.onload = res;
+      scriptTag.onerror = rej;
+    });
+  }
+  function $joinArr(arr, cb, separator = "") {
+    return arr?.length ? arr.map(cb).join(separator) : "";
+  }
+  function $url2Link(str, target = "_self") {
+    /* demo: {{https://juejin.cn/post/7166856136748957704}} */
+    const urlReg =
+      /\{\{((https?:\/\/)?(([0-9a-z.]+\.[a-z]+)|(([0-9]{1,3}\.){3}[0-9]{1,3}))(:[0-9]+)?\/[-a-z0-9_:@&?=+,.!/~*'%$#]*)\}\}/gi;
+    return str.replace(
+      urlReg,
+      (s, t) => `<a href="${t}" target="${target}">${t}</a>`
+    );
+  }
+  function $writeHtml(dom, html) {
+    const regExp = /<script(([\s\S])*?)<\/script>/gi;
+    dom.innerHTML = html.replace(regExp, "");
+    return regExp.test(html);
+  }
+</script>
+<script type="module" async>
+  // 切换样式
+  const styleTag = document.createElement("style");
+  let styleContent = "";
+  {
+    const pure = searchParams.get("pure");
+    if (pure != null) {
+      styleContent += `
           a {
             color: var(--color);
           }
@@ -232,185 +233,184 @@
             display: none;
           }
         `;
-        pure === "force" &&
-          document.addEventListener(
-            "click",
-            (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            },
-            true
-          );
-      }
+      pure === "force" &&
+        document.addEventListener(
+          "click",
+          (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          },
+          true
+        );
     }
-    styleTag.innerHTML = styleContent;
-    document.head.appendChild(styleTag);
-  </script>
-  <script type="module" async>
-    // qrcode
-    const qrcodeContainer = document.querySelector("div.resume-qrcode");
-    const resumeType = searchParams.get("type");
-    if (!resumeType) {
-      qrcodeContainer.setAttribute("style", "display: none;");
-    }
-    const qrcodeText = document.createElement("div");
-    $writeHtml(qrcodeText, href);
-    qrcodeContainer.appendChild(qrcodeText);
+  }
+  styleTag.innerHTML = styleContent;
+  document.head.appendChild(styleTag);
+</script>
+<script type="module" async>
+  // qrcode
+  const qrcodeContainer = document.querySelector("div.resume-qrcode");
+  const resumeType = searchParams.get("type");
+  if (!resumeType) {
+    qrcodeContainer.setAttribute("style", "display: none;");
+  }
+  const qrcodeText = document.createElement("div");
+  $writeHtml(qrcodeText, href);
+  qrcodeContainer.appendChild(qrcodeText);
 
-    $importScript(
-      "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
-    ).then(() => {
-      let colorDark = root.style.getPropertyValue("--theme-color");
-      if (colorDark.indexOf("#") !== 0)
-        colorDark = root.style.getPropertyValue("--color");
-      const qrcode = new QRCode(qrcodeContainer.children[0], {
-        text: encodeURIComponent(href),
-        correctLevel: QRCode.CorrectLevel.M,
-        colorDark,
-        colorLight: root.style.getPropertyValue("--background-color"),
-      });
+  $importScript(
+    "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
+  ).then(() => {
+    let colorDark = root.style.getPropertyValue("--theme-color");
+    if (colorDark.indexOf("#") !== 0)
+      colorDark = root.style.getPropertyValue("--color");
+    const qrcode = new QRCode(qrcodeContainer.children[0], {
+      text: encodeURIComponent(href),
+      correctLevel: QRCode.CorrectLevel.M,
+      colorDark,
+      colorLight: root.style.getPropertyValue("--background-color"),
     });
-  </script>
-  <script type="module" async>
-    // theme-btn
-    {
-      let isDark = localStorage.getItem("dark");
-      window.addEventListener("beforeunload", () => {
-        isDark
-          ? localStorage.setItem("dark", isDark)
-          : localStorage.removeItem("dark");
-      });
-      const themeBtn = document.querySelector("div.theme-btn");
-      function setTheme() {
-        root.style.setProperty(
-          "--background-color",
-          isDark ? "#2f2d2d" : "#ffffff"
-        );
-        root.style.setProperty("--color", isDark ? "#ffffff" : "#000000");
-        root.style.setProperty("--light-color", isDark ? "#dce0e7" : "#948e8e");
-        root.style.setProperty(
-          "--border-color",
-          isDark ? "#948e8e" : "#dce0e7"
-        );
-        themeBtn.title = `${isDark ? "夜间" : "日常"}模式`;
-        themeBtn.innerText = isDark ? "🌑" : "🌕";
-      }
+  });
+</script>
+<script type="module" async>
+  // theme-btn
+  {
+    let isDark = localStorage.getItem("dark");
+    window.addEventListener("beforeunload", () => {
+      isDark
+        ? localStorage.setItem("dark", isDark)
+        : localStorage.removeItem("dark");
+    });
+    const themeBtn = document.querySelector("div.theme-btn");
+    function setTheme() {
+      root.style.setProperty(
+        "--background-color",
+        isDark ? "#2f2d2d" : "#ffffff"
+      );
+      root.style.setProperty("--color", isDark ? "#ffffff" : "#000000");
+      root.style.setProperty("--light-color", isDark ? "#dce0e7" : "#948e8e");
+      root.style.setProperty(
+        "--border-color",
+        isDark ? "#948e8e" : "#dce0e7"
+      );
+      themeBtn.title = `${isDark ? "夜间" : "日常"}模式`;
+      themeBtn.innerText = isDark ? "🌑" : "🌕";
+    }
+    setTheme();
+    themeBtn.addEventListener("click", () => {
+      isDark = +!isDark;
       setTheme();
-      themeBtn.addEventListener("click", () => {
-        isDark = +!isDark;
-        setTheme();
-      });
-    }
-    {
-      let themeColor = localStorage.getItem("themeColor");
-      window.addEventListener("beforeunload", () => {
-        themeColor && localStorage.setItem("themeColor", themeColor);
-      });
-      const themeBtnPlus = document.querySelector("input.theme-btn-plus");
-      function setTheme() {
-        if (!themeColor) return;
-        if (themeColor === "#000000") {
-          root.style.setProperty("--theme-color", "var(--color)");
-        } else {
-          root.style.setProperty("--theme-color", themeColor);
-        }
-        themeBtnPlus.value = themeColor;
+    });
+  }
+  {
+    let themeColor = localStorage.getItem("themeColor");
+    window.addEventListener("beforeunload", () => {
+      themeColor && localStorage.setItem("themeColor", themeColor);
+    });
+    const themeBtnPlus = document.querySelector("input.theme-btn-plus");
+    function setTheme() {
+      if (!themeColor) return;
+      if (themeColor === "#000000") {
+        root.style.setProperty("--theme-color", "var(--color)");
+      } else {
+        root.style.setProperty("--theme-color", themeColor);
       }
+      themeBtnPlus.value = themeColor;
+    }
+    setTheme();
+    themeBtnPlus.addEventListener("change", () => {
+      themeColor = themeBtnPlus.value;
       setTheme();
-      themeBtnPlus.addEventListener("change", () => {
-        themeColor = themeBtnPlus.value;
-        setTheme();
-      });
-    }
-  </script>
-  <script type="module" async>
-    const type = searchParams.get("type");
-    let data;
-    // target data on cdn -> local target data -> demo data on cdn
-    if (type) {
-      try {
-        const { default: defaultData } = await import(`./data/${type}.js`);
-        data = defaultData;
-      } catch {}
-    }
-    data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
-    if (!data) {
-      const dataModule = import(`./data/demo.js`);
-      alert("数据缺失！");
-      const { default: defaultData } = await dataModule;
+    });
+  }
+</script>
+<script type="module" async>
+  const type = searchParams.get("type");
+  let data;
+  // target data on cdn -> local target data -> demo data on cdn
+  if (type) {
+    try {
+      const { default: defaultData } = await import(`./data/${type}.js`);
       data = defaultData;
-    }
-    {
-      data.docTitle && (document.title = data.docTitle);
-      const titleTag = document.querySelector(".title");
-      data.title && $writeHtml(titleTag, data.title);
-      const subtitleTag = document.querySelector(".subtitle");
-      data.subtitle && $writeHtml(subtitleTag, data.subtitle);
-      const infoTag = document.querySelector(".info");
-      $writeHtml(
-        infoTag,
-        $joinArr(
-          data.info,
-          ({ field, value, icon }) => `
+    } catch { }
+  }
+  data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
+  if (!data) {
+    const dataModule = import(`./data/demo.js`);
+    alert("数据缺失！");
+    const { default: defaultData } = await dataModule;
+    data = defaultData;
+  }
+  {
+    data.docTitle && (document.title = data.docTitle);
+    const titleTag = document.querySelector(".title");
+    data.title && $writeHtml(titleTag, data.title);
+    const subtitleTag = document.querySelector(".subtitle");
+    data.subtitle && $writeHtml(subtitleTag, data.subtitle);
+    const infoTag = document.querySelector(".info");
+    $writeHtml(
+      infoTag,
+      $joinArr(
+        data.info,
+        ({ field, value, icon }) => `
           <div class="vertical-center">
             <img src="${icon}" alt="" />${value}
           </div>
           `
-        )
-      );
-      const photoTag = document.querySelector(".photo");
-      data.photo && (photoTag.src = data.photo);
-    }
-    {
-      const chaptersTag = document.querySelector(".content-container");
-      $writeHtml(
-        chaptersTag,
-        $joinArr(
-          data.chapters,
-          ({ title, icon, sections }) => `
+      )
+    );
+    const photoTag = document.querySelector(".photo");
+    data.photo && (photoTag.src = data.photo);
+  }
+  {
+    const chaptersTag = document.querySelector(".content-container");
+    $writeHtml(
+      chaptersTag,
+      $joinArr(
+        data.chapters,
+        ({ title, icon, sections }) => `
         <section>
             <h3 class="vertical-center">
                 <img src="${icon}" alt="" />${title}
             </h3>
             ${$joinArr(
-              sections,
-              ({ titles, fragments }) => `
+          sections,
+          ({ titles, fragments }) => `
                 <div class="space-between">
                     ${$joinArr(
-                      titles,
-                      (e, i) => `
-                        <span class="${
-                          i ? "ellipse" : "fixed-length"
-                        }">${e}</span>
+            titles,
+            (e, i) => `
+                        <span class="${i ? "ellipse" : "fixed-length"
+              }">${e}</span>
                         `,
-                      '<span class="gap"></span>'
-                    )}
+            '<span class="gap"></span>'
+          )}
                 </div>
                 <div>
                     ${$joinArr(
-                      fragments,
-                      ({ title, content }) => `
+            fragments,
+            ({ title, content }) => `
                         <div>
-                            ${
-                              title
-                                ? `<div class="desc-title">${title}</div>`
-                                : ""
-                            }
+                            ${title
+                ? `<div class="desc-title">${title}</div>`
+                : ""
+              }
                             ${$joinArr(
-                              $url2Link(content, "_blank").split("\n"),
-                              (e) => `<li>${e}</li>`
-                            )}
+                $url2Link(content, "_blank").split("\n"),
+                (e) => `<li>${e}</li>`
+              )}
                         </div>
                         `
-                    )}
+          )}
                 </div>
             `,
-              '<div class="dashed-separator"></div>'
-            )}
+          '<div class="dashed-separator"></div>'
+        )}
         </section>
         `
-        )
-      );
-    }
-  </script>
+      )
+    );
+  }
+</script>
+
 </html>
