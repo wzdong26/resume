@@ -308,6 +308,7 @@
       });
       const themeBtnPlus = document.querySelector("input.theme-btn-plus");
       function setTheme() {
+        if (!themeColor) return;
         if (themeColor === "#000000") {
           root.style.setProperty("--theme-color", "var(--color)");
         } else {
