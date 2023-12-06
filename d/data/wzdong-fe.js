@@ -1,7 +1,7 @@
 const data = {
   docTitle: "2024-王志东-前端开发",
   title: "王志东",
-  photo: "../assets/d/wzdong.jpg",
+  photo: "../assets/d/wzdong.png",
   subtitle: "意向岗位：前端开发（2024应届）",
   info: [
     { value: "性别：男", icon: "../assets/icon/gender.svg" },

@@ -1,7 +1,7 @@
 const data = {
   docTitle: "2024-王志东",
   title: "王志东",
-  photo: "../assets/d/wzdong.jpg",
+  photo: "../assets/d/wzdong.png",
   info: [
     { value: "性别：男", icon: "../assets/icon/gender.svg" },
     { value: "出生年月：1999-11", icon: "../assets/icon/birth.svg" },
