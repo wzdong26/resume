@@ -1,6 +1,6 @@
 const data = {
   title: "xxx",
-  photo: "./assets/d/demo.png",
+  photo: "../assets/d/demo.png",
   subtitle: "意向岗位：xxx",
   info: [
     { value: "性别：男", icon: "../assets/icon/gender.svg" },
