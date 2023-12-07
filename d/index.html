@@ -252,7 +252,7 @@
     const importQrcodejs = $importScript(
       "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
     )
-    let qrcode;
+    let qrcode, isActive;
     return (flag) => {
       if (!isActive && !flag) return;
       return importQrcodejs.then(() => {
