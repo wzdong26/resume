@@ -262,7 +262,6 @@
           colorDark = root.style.getPropertyValue("--color");
         qrcode?.clear();
         qrcodeImg.innerHTML = '';
-        console.log(colorDark);
         qrcode = new QRCode(qrcodeImg, {
           text: href,
           correctLevel: QRCode.CorrectLevel.M,
@@ -316,7 +315,7 @@
           timer = setTimeout(() => {
             // LCP
             window.print();
-            window.addEventListener('afterprint', window.close)
+            window.close();
           }, 1000)
         }).observe(document, { subtree: true, childList: true });
       })();
@@ -330,11 +329,6 @@
   {
     // theme-btn
     let isDark = localStorage.getItem("dark");
-    window.addEventListener("beforeunload", () => {
-      isDark
-        ? localStorage.setItem("dark", isDark)
-        : localStorage.removeItem("dark");
-    });
     const themeBtn = document.querySelector("div.theme-btn");
     function setTheme() {
       root.style.setProperty(
@@ -349,6 +343,9 @@
       );
       themeBtn.title = `${isDark ? "夜间" : "日常"}模式`;
       themeBtn.innerText = isDark ? "🌑" : "🌕";
+      isDark
+        ? localStorage.setItem("dark", isDark)
+        : localStorage.removeItem("dark");
       $setQrcode();
     }
     setTheme();
@@ -360,16 +357,15 @@
   {
     // theme-btn-plus
     let themeColor = localStorage.getItem("themeColor");
-    window.addEventListener("beforeunload", () => {
-      themeColor && localStorage.setItem("themeColor", themeColor);
-    });
     const themeBtnPlus = document.querySelector("input.theme-btn-plus");
     function setTheme() {
       if (!themeColor) return;
       if (themeColor === "#000000") {
         root.style.setProperty("--theme-color", "var(--color)");
+        localStorage.removeItem("themeColor");
       } else {
         root.style.setProperty("--theme-color", themeColor);
+        localStorage.setItem("themeColor", themeColor);
       }
       themeBtnPlus.value = themeColor;
       $setQrcode();
