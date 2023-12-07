@@ -252,18 +252,24 @@
     const importQrcodejs = $importScript(
       "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
     )
-    return () => importQrcodejs.then(() => {
-      let colorDark = root.style.getPropertyValue("--theme-color");
-      if (colorDark.indexOf("#") !== 0)
-        colorDark = root.style.getPropertyValue("--color");
-      const qrcode = new QRCode(qrcodeContainer.children[0], {
-        text: href,
-        correctLevel: QRCode.CorrectLevel.M,
-        colorDark,
-        colorLight: root.style.getPropertyValue("--background-color"),
-      });
-      $showTag(qrcodeContainer, true);
-    });
+    let qrcode;
+    return (flag) => {
+      if (!isActive && !flag) return;
+      return importQrcodejs.then(() => {
+        isActive = flag;
+        let colorDark = root.style.getPropertyValue("--theme-color");
+        if (colorDark.indexOf("#") !== 0)
+          colorDark = root.style.getPropertyValue("--color");
+        qrcode?.clear();
+        qrcode = new QRCode(qrcodeContainer.children[0], {
+          text: href,
+          correctLevel: QRCode.CorrectLevel.M,
+          colorDark,
+          colorLight: root.style.getPropertyValue("--background-color"),
+        });
+        flag && $showTag(qrcodeContainer, true);
+      })
+    };
   })()
   const $addQueryUrl = (query) => {
     let url = href;
