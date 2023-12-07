@@ -109,15 +109,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1em;
     }
 
     .space-between>.fixed-length {
       flex-shrink: 0;
     }
 
-    .space-between>.gap {
-      min-width: 1em;
-    }
+    
 
     .dashed-separator {
       padding-bottom: 4px;
@@ -131,19 +130,34 @@
       font-weight: bold;
     }
 
-    .theme-btn {
+    .side-btn-group {
       position: fixed;
-      top: 5px;
       right: 5px;
+      top: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .theme-btn {
+      font-size: 1lh;
       cursor: pointer;
     }
 
     .theme-btn-plus {
-      position: fixed;
-      top: 30px;
-      right: 5px;
-      inline-size: 27px;
+      inline-size: 30px;
+      block-size: 30px;
       padding: 0;
+      cursor: pointer;
+    }
+
+    .print-btn {
+      width: 30px;
+      height: 30px;
+      font-size: 1lh;
+      cursor: pointer;
+      text-align: center;
     }
 
     .resume-qrcode {
@@ -179,8 +193,11 @@
     <div></div>
     <div>扫描二维码可在线查看简历</div>
   </div>
-  <div class="theme-btn"></div>
-  <input class="theme-btn-plus" type="color" />
+  <div class="side-btn-group">
+    <div class="theme-btn"></div>
+    <input class="theme-btn-plus" type="color" title="主题色选择" />
+    <button class="print-btn" title="打印">🖨</button>
+  </div>
 </body>
 <script>
   // env var
@@ -214,31 +231,84 @@
     dom.innerHTML = html.replace(regExp, "");
     return regExp.test(html);
   }
+  const $showTag = (() => {
+    const displayMap = new WeakMap();
+    return function (tag, flag = true) {
+      const display = tag.style.getPropertyValue("display");
+      if (flag) {
+        tag.style.setProperty('display', displayMap.get(tag) ?? '')
+      } else {
+        display && displayMap.set(tag, display);
+        tag.style.setProperty('display', 'none');
+      }
+    }
+  })();
+  // qrcode
+  const $setQrcode = (() => {
+    const qrcodeContainer = document.querySelector("div.resume-qrcode");
+    $showTag(qrcodeContainer, false);
+    const qrcodeText = document.createElement("div");
+    $writeHtml(qrcodeText, href);
+    qrcodeContainer.appendChild(qrcodeText);
+
+    const importQrcodejs = $importScript(
+      "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
+    )
+    return () => importQrcodejs.then(() => {
+      let colorDark = root.style.getPropertyValue("--theme-color");
+      if (colorDark.indexOf("#") !== 0)
+        colorDark = root.style.getPropertyValue("--color");
+      const qrcode = new QRCode(qrcodeContainer.children[0], {
+        text: href,
+        correctLevel: QRCode.CorrectLevel.M,
+        colorDark,
+        colorLight: root.style.getPropertyValue("--background-color"),
+      });
+      $showTag(qrcodeContainer, true);
+    });
+  })()
+  const $addQueryUrl = (query) => {
+    let url = href;
+    let xIdx, xStr = '';
+    if ((xIdx = href.indexOf('#')) >= 0) {
+      url = href.slice(0, xIdx);
+      xStr = href.slice(xIdx);
+    }
+    if (url.indexOf('?') < 0) /*www.w.com/*/ return url + '?' + query + xStr;
+    if (['&', '?'].includes(url[url.length - 1])) return url + query + xStr;
+    return url + '&' + query + xStr;
+  }
 </script>
 <script type="module" async>
   // 切换样式
   const styleTag = document.createElement("style");
   let styleContent = "";
   {
-    const pure = searchParams.get("pure");
-    if (pure != null) {
+    const pure = searchParams.getAll("pure");
+    if (pure.length) {
       styleContent += `
           a {
             color: var(--color);
           }
-          .theme-btn {
-            display: none;
-          }
-          .theme-btn-plus {
+          .side-btn-group {
             display: none;
           }
         `;
-      pure === "force" &&
+      pure.includes("force") &&
         document.addEventListener(
           "click",
           (e) => {
             e.preventDefault();
             e.stopPropagation();
+          },
+          true
+        );
+      pure.includes("print") &&
+        window.addEventListener(
+          "load",
+          () => {
+            window.print();
+            window.addEventListener('afterprint', window.close)
           },
           true
         );
@@ -248,33 +318,9 @@
   document.head.appendChild(styleTag);
 </script>
 <script type="module" async>
-  // qrcode
-  const qrcodeContainer = document.querySelector("div.resume-qrcode");
-  const resumeType = searchParams.get("type");
-  if (!resumeType) {
-    qrcodeContainer.setAttribute("style", "display: none;");
-  }
-  const qrcodeText = document.createElement("div");
-  $writeHtml(qrcodeText, href);
-  qrcodeContainer.appendChild(qrcodeText);
-
-  $importScript(
-    "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
-  ).then(() => {
-    let colorDark = root.style.getPropertyValue("--theme-color");
-    if (colorDark.indexOf("#") !== 0)
-      colorDark = root.style.getPropertyValue("--color");
-    const qrcode = new QRCode(qrcodeContainer.children[0], {
-      text: encodeURIComponent(href),
-      correctLevel: QRCode.CorrectLevel.M,
-      colorDark,
-      colorLight: root.style.getPropertyValue("--background-color"),
-    });
-  });
-</script>
-<script type="module" async>
-  // theme-btn
+  // side-btn-group
   {
+    // theme-btn
     let isDark = localStorage.getItem("dark");
     window.addEventListener("beforeunload", () => {
       isDark
@@ -295,6 +341,7 @@
       );
       themeBtn.title = `${isDark ? "夜间" : "日常"}模式`;
       themeBtn.innerText = isDark ? "🌑" : "🌕";
+      $setQrcode();
     }
     setTheme();
     themeBtn.addEventListener("click", () => {
@@ -303,6 +350,7 @@
     });
   }
   {
+    // theme-btn-plus
     let themeColor = localStorage.getItem("themeColor");
     window.addEventListener("beforeunload", () => {
       themeColor && localStorage.setItem("themeColor", themeColor);
@@ -316,6 +364,7 @@
         root.style.setProperty("--theme-color", themeColor);
       }
       themeBtnPlus.value = themeColor;
+      $setQrcode();
     }
     setTheme();
     themeBtnPlus.addEventListener("change", () => {
@@ -323,15 +372,23 @@
       setTheme();
     });
   }
+  {
+    // print-btn
+    const printBtn = document.querySelector('button.print-btn')
+    printBtn.addEventListener('click', () => {
+      window.open($addQueryUrl('pure=print'), '_blank')
+    })
+  }
 </script>
 <script type="module" async>
-  const type = searchParams.get("type");
+  const type = searchParams.get("t");
   let data;
   // target data on cdn -> local target data -> demo data on cdn
   if (type) {
     try {
       const { default: defaultData } = await import(`./data/${type}.js`);
       data = defaultData;
+      $setQrcode();
     } catch { }
   }
   data ??= JSON.parse(localStorage.getItem(type ? `data-${type}` : "data"));
@@ -370,40 +427,35 @@
         data.chapters,
         ({ title, icon, sections }) => `
         <section>
-            <h3 class="vertical-center">
-                <img src="${icon}" alt="" />${title}
-            </h3>
-            ${$joinArr(
+          <h3 class="vertical-center">
+            <img src="${icon}" alt="" />${title}
+          </h3>
+          ${$joinArr(
           sections,
           ({ titles, fragments }) => `
-                <div class="space-between">
-                    ${$joinArr(
+          <div class="space-between">
+          ${$joinArr(
             titles,
             (e, i) => `
-                        <span class="${i ? "ellipse" : "fixed-length"
-              }">${e}</span>
-                        `,
-            '<span class="gap"></span>'
+            <span class="${i ? "ellipse" : "fixed-length"}">${e}</span>
+            `,
           )}
-                </div>
-                <div>
-                    ${$joinArr(
+          </div>
+          <div>
+          ${$joinArr(
             fragments,
             ({ title, content }) => `
-                        <div>
-                            ${title
-                ? `<div class="desc-title">${title}</div>`
-                : ""
-              }
-                            ${$joinArr(
-                $url2Link(content, "_blank").split("\n"),
-                (e) => `<li>${e}</li>`
-              )}
-                        </div>
-                        `
+            <div>
+              ${title ? `<div class="desc-title">${title}</div>` : ""}
+              ${$joinArr(
+              $url2Link(content, "_blank").split("\n"),
+              (e) => `<li>${e}</li>`
+            )}
+            </div>
+            `
           )}
-                </div>
-            `,
+          </div>
+          `,
           '<div class="dashed-separator"></div>'
         )}
         </section>
