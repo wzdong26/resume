@@ -168,8 +168,8 @@
     }
 
     .resume-qrcode img {
+      display: inline-block !important;
       width: 80px;
-      max-width: 25vw;
     }
   </style>
 </head>
@@ -244,10 +244,11 @@
   })();
   // qrcode
   const $setQrcode = (() => {
+    const url = href.replace(/[\?\&]pure=print/, '')
     const qrcodeContainer = document.querySelector("div.resume-qrcode");
     $showTag(qrcodeContainer, false);
     const qrcodeText = document.createElement("div");
-    $writeHtml(qrcodeText, href);
+    $writeHtml(qrcodeText, url);
     qrcodeContainer.appendChild(qrcodeText);
     const qrcodeImg = qrcodeContainer.children[0];
     const importQrcodejs = $importScript(
@@ -263,10 +264,12 @@
         qrcode?.clear();
         qrcodeImg.innerHTML = '';
         qrcode = new QRCode(qrcodeImg, {
-          text: href,
+          text: url,
           correctLevel: QRCode.CorrectLevel.M,
           colorDark,
           colorLight: root.style.getPropertyValue("--background-color"),
+          width: 128,
+          height: 128,
         });
         flag && $showTag(qrcodeContainer, true);
       })
