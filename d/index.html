@@ -169,6 +169,7 @@
 
     .resume-qrcode img {
       width: 80px;
+      max-width: 25vw;
     }
   </style>
 </head>
@@ -248,20 +249,21 @@
     const qrcodeText = document.createElement("div");
     $writeHtml(qrcodeText, href);
     qrcodeContainer.appendChild(qrcodeText);
-
+    const qrcodeImg = qrcodeContainer.children[0];
     const importQrcodejs = $importScript(
       "https://cdn.jsdelivr.net/npm/qrcodejs2@0.0.2/qrcode.min.js"
     )
     let qrcode, isActive;
     return (flag) => {
-      if (!isActive && !flag) return;
+      if (!qrcode && !flag) return;
       return importQrcodejs.then(() => {
-        isActive = flag;
         let colorDark = root.style.getPropertyValue("--theme-color");
         if (colorDark.indexOf("#") !== 0)
           colorDark = root.style.getPropertyValue("--color");
         qrcode?.clear();
-        qrcode = new QRCode(qrcodeContainer.children[0], {
+        qrcodeImg.innerHTML = '';
+        console.log(colorDark);
+        qrcode = new QRCode(qrcodeImg, {
           text: href,
           correctLevel: QRCode.CorrectLevel.M,
           colorDark,
@@ -307,15 +309,17 @@
           },
           true
         );
-      pure.includes("print") &&
-        window.addEventListener(
-          "load",
-          () => {
+      pure.includes("print") && (() => {
+        let timer;
+        new MutationObserver((entryList) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            // LCP
             window.print();
             window.addEventListener('afterprint', window.close)
-          },
-          true
-        );
+          }, 1000)
+        }).observe(document, { subtree: true, childList: true });
+      })();
     }
   }
   styleTag.innerHTML = styleContent;
